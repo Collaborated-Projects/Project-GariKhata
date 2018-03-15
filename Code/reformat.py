@@ -23,3 +23,4 @@ def reformat(name):#"GKBaseMap.svg"
     file.write(reformater)
     file.close()
 ##    parse(name)
+#reformat("GKPlotProfile.svg")

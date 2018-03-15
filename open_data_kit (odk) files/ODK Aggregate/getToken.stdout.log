@@ -1,0 +1,41 @@
+********************************************************
+There is a new version of the SDK available.
+-----------
+Latest SDK:
+Release: 1.9.61
+Timestamp: Tue Jan 23 03:36:12 PKT 2018
+API versions: [1.0]
+
+-----------
+Your SDK:
+Release: 1.9.54
+Timestamp: Tue Jun 06 03:56:09 PKT 2017
+API versions: [1.0]
+
+-----------
+Please visit https://developers.google.com/appengine/downloads for the latest SDK.
+********************************************************
+The following URL can be used to authenticate:
+  https://accounts.google.com/o/oauth2/auth?access_type=offline&approval_prompt=force&client_id=550516889912.apps.googleusercontent.com&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=https://www.googleapis.com/auth/appengine.admin%20https://www.googleapis.com/auth/cloud-platform
+Attempting to open it in your browser now.
+Please enter code: 
+Reading application configuration data...
+
+
+
+Beginning interaction for module 
+default
+...
+
+max_blob_size: 32000000
+
+max_file_count: 10000
+max_file_size: 32000000
+max_files_to_clone: 100
+max_total_file_size: 157286400
+Success.
+
+Cleaning up temporary files for module 
+default
+...
+

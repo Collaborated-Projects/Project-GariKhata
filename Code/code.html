@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GariKhata Neighbourhood Plan</title>
+	<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+	<script src="easeljs-0.8.2.min.js"></script>
+	<script src="foo9.createjs.tooltip.js"></script>
+	<script>		var stage, showTip = false;
+		var tip = null;
+		var polygons = [];
+		var polylines = [];
+		var lines = [];
+		var rects = [];
+		var circles = [];
+		fillObj = [];
+
+		function init()
+		{
+			stage = new createjs.Stage("gkCanvas");
+
+			for(var i = 0; i < 18; i++)
+			{
+				polygons.push(stage.addChild(new createjs.Shape()))
+			}
+			for(var i = 0; i < 0; i++)
+			{
+				polylines.push(stage.addChild(new createjs.Shape()))
+			}
+			for(var i = 0; i < 0; i++)
+			{
+				lines.push(stage.addChild(new createjs.Shape()))
+			}
+			for(var i = 0; i < 0; i++)
+			{
+				rects.push(stage.addChild(new createjs.Shape()))
+			}
+			for(var i = 0; i < 0; i++)
+			{
+				circles.push(stage.addChild(new createjs.Shape()))
+			}
+	stage.update();
+	</script>
+</head>
+
+<body onload="init();">
+	<canvas id="gkCanvas" width="1200" height="1200">
+		alternate content
+	</canvas>
+</body>
+</html>

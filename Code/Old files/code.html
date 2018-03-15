@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GariKhata Neighbourhood Plan</title>
+	<link href="../_shared/demo.css" rel="stylesheet" type="text/css">
+	<script src="..\Libraries used\easeljs-0.8.2.min.js"></script>
+	<script src="..\Libraries usedoo9.createjs.tooltip.js"></script>
+	<script>
+		var stage, showTip = false;
+		var tip = null;
+		var polygons = [];
+		var polylines= [];
+		 fillObj = [];
+		function init(){
+			stage = new createjs.Stage("demoCanvas");
+			for(var i=0; i<137; i++)
+			{
+				polygons.push(stage.addChild(new createjs.Shape()));
+			}
+			fillObj.push(objects[0].graphics.beginStroke("black").command);
+			objects[0].graphics.moveTo(508,564).lineTo(516,564).lineTo(775,552).lineTo(792,552).lineTo(792,443).lineTo(772,443).lineTo(508,446).lineTo(508,564);
+			fillObj.push(objects[1].graphics.beginStroke("black").command);
+			objects[1].graphics.moveTo(471,771).lineTo(463,771).lineTo(11,754).lineTo(3,754).lineTo(3,744).lineTo(3,612).lineTo(16,612).lineTo(473,594).lineTo(473,603).lineTo(471,771);
+			fillObj.push(objects[2].graphics.beginStroke("black").command);
+			objects[2].graphics.moveTo(506,590).lineTo(505,775).lineTo(517,775).lineTo(775,796).lineTo(791,796).lineTo(791,570).lineTo(772,570).lineTo(513,590).lineTo(506,590);
+			fillObj.push(objects[3].graphics.beginStroke("black").command);
+			objects[3].graphics.moveTo(472,570).lineTo(463,570).lineTo(11,587).lineTo(3,587).lineTo(3,475).lineTo(15,474).lineTo(472,451).lineTo(472,570);
+			fillObj.push(objects[4].graphics.beginStroke("black").command);
+			objects[4].graphics.moveTo(0,444).lineTo(15,444).lineTo(45,445).lineTo(472,423).lineTo(472,305).lineTo(463,305).lineTo(296,312).lineTo(61,326).lineTo(12,359).lineTo(0,359).lineTo(0,444);
+			fillObj.push(objects[5].graphics.beginStroke("black").command);
+			objects[5].graphics.moveTo(789,411).lineTo(771,411).lineTo(508,417).lineTo(507,308).lineTo(517,308).lineTo(776,302).lineTo(789,302).lineTo(789,411);
+			fillObj.push(objects[6].graphics.beginStroke("black").command);
+			objects[6].graphics.moveTo(789,271).lineTo(789,163).lineTo(770,163).lineTo(640,161).lineTo(517,170).lineTo(507,170).lineTo(507,281).lineTo(571,281).lineTo(653,277).lineTo(789,271);
+			fillObj.push(objects[7].graphics.beginStroke("black").command);
+			objects[7].graphics.moveTo(514,136).lineTo(514,39).lineTo(576,9).lineTo(589,6).lineTo(789,0).lineTo(789,132).lineTo(598,132).lineTo(514,136);
+			fillObj.push(objects[8].graphics.beginStroke("black").command);
+			objects[8].graphics.moveTo(482,92).lineTo(476,277).lineTo(353,280).lineTo(119,291).lineTo(115,291).lineTo(135,271).lineTo(475,92).lineTo(482,92);

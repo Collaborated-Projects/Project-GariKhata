@@ -1,0 +1,13 @@
+Reading application configuration data...
+
+
+Beginning interaction for module default...
+Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
+Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
+Unable to delete backend: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-garikhata&
+400 Bad Request
+Deleting backend: backgroundBackend 'background' has not been defined.
+
+Please see the logs [C:\Users\HP\AppData\Local\Temp\appcfg1964015781603374795.log] for further information.
+
+

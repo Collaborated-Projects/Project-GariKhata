@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>project_garikhata_forms</h:title>
+    <model>
+      <instance>
+        <project_garikhata_forms id="project_garikhata_forms">
+          <personName/>
+          <plotID/>
+          <plotUse/>
+          <frontWidth/>
+          <buildingName/>
+          <plotNumber/>
+          <yearBuilt/>
+          <numFloors/>
+          <storeDate/>
+          <storeTime/>
+          <storeLocation/>
+          <imageQuestion/>
+          <floor_repeat_count/>
+          <floor_repeat jr:template="">
+            <floorType/>
+          </floor_repeat>
+          <meta>
+            <instanceID/>
+          </meta>
+        </project_garikhata_forms>
+      </instance>
+      <bind nodeset="/project_garikhata_forms/personName" type="string"/>
+      <bind nodeset="/project_garikhata_forms/plotID" type="string"/>
+      <bind nodeset="/project_garikhata_forms/plotUse" type="select1"/>
+      <bind nodeset="/project_garikhata_forms/frontWidth" type="int"/>
+      <bind nodeset="/project_garikhata_forms/buildingName" type="string"/>
+      <bind nodeset="/project_garikhata_forms/plotNumber" type="string"/>
+      <bind constraint=". &lt;= 9999" nodeset="/project_garikhata_forms/yearBuilt" type="int"/>
+      <bind constraint=". &lt;= 22" nodeset="/project_garikhata_forms/numFloors" type="int"/>
+      <bind jr:preload="date" jr:preloadParams="today" nodeset="/project_garikhata_forms/storeDate" type="date"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/project_garikhata_forms/storeTime" type="dateTime"/>
+      <bind nodeset="/project_garikhata_forms/storeLocation" type="geopoint"/>
+      <bind nodeset="/project_garikhata_forms/imageQuestion" type="binary"/>
+      <bind calculate=" /project_garikhata_forms/numFloors " nodeset="/project_garikhata_forms/floor_repeat_count" readonly="true()" type="string"/>
+      <bind nodeset="/project_garikhata_forms/floor_repeat/floorType" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/project_garikhata_forms/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/project_garikhata_forms/personName">
+      <label>Please enter your name here:</label>
+    </input>
+    <input ref="/project_garikhata_forms/plotID">
+      <label>Please provide the plot ID:</label>
+    </input>
+    <select1 ref="/project_garikhata_forms/plotUse">
+      <label>What is the plot used for?</label>
+      <item>
+        <label>Residential</label>
+        <value>residential</value>
+      </item>
+      <item>
+        <label>Commercial</label>
+        <value>commercial</value>
+      </item>
+      <item>
+        <label>Service</label>
+        <value>service</value>
+      </item>
+      <item>
+        <label>Mixed</label>
+        <value>mixed</value>
+      </item>
+      <item>
+        <label>Abandoned</label>
+        <value>abandoned</value>
+      </item>
+    </select1>
+    <input ref="/project_garikhata_forms/frontWidth">
+      <label>Please provide the front width of plot:</label>
+    </input>
+    <input ref="/project_garikhata_forms/buildingName">
+      <label>What is the name of building?</label>
+    </input>
+    <input ref="/project_garikhata_forms/plotNumber">
+      <label>Please provide the official plot number:</label>
+    </input>
+    <input ref="/project_garikhata_forms/yearBuilt">
+      <label>Please provide the year in which the plot was built:</label>
+    </input>
+    <input ref="/project_garikhata_forms/numFloors">
+      <label>The number of floors in this building are:</label>
+    </input>
+    <input ref="/project_garikhata_forms/storeLocation">
+      <label>Record current GPS coordinates here:</label>
+    </input>
+    <upload mediatype="image/*" ref="/project_garikhata_forms/imageQuestion">
+      <label>Take a picture</label>
+    </upload>
+    <group ref="/project_garikhata_forms/floor_repeat">
+      <label>Floor types</label>
+      <repeat jr:count=" /project_garikhata_forms/floor_repeat_count " nodeset="/project_garikhata_forms/floor_repeat">
+        <input ref="/project_garikhata_forms/floor_repeat/floorType">
+          <label>What is the type of this floor?</label>
+        </input>
+      </repeat>
+    </group>
+  </h:body>
+</h:html>
