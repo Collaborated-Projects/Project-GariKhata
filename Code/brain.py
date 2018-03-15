@@ -32,9 +32,9 @@ def parse(xml_filename):                                        ##Takes a '.svg'
 
     for rect in tag_rect:
         rects_info.append((rect.attributes["class"].value,
-                           int((float(rect.attributes["x"].value)), int(float(rect.attributes["y"].value)),
-                               int(float(rect.attributes["width"].value)),
-                               int(float(rect.attributes["height"].value)))))
+                           [(int(float(rect.attributes["x"].value)), int(float(rect.attributes["y"].value))),
+                           (int(float(rect.attributes["width"].value)), int(float(rect.attributes["height"].value)))]))
+
     for circle in tag_circle:
         circles_info.append((circle.attributes["class"].value,
                              (int(float(circle.attributes["cx"].value)), int(float(circle.attributes["cy"].value)),
@@ -46,8 +46,8 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                                   int(float(ellipse.attributes["ry"].value)))))
     for line in tag_line:
         lines_info.append((line.attributes["class"].value,
-                           int((float(line.attributes["x1"].value)), int(float(line.attributes["y1"].value)),
-                               int(float(line.attributes["x2"].value)), int(float(line.attributes["y2"].value)))))
+                           [(int(float(line.attributes["x1"].value)), int(float(line.attributes["y1"].value))),
+                           (int(float(line.attributes["x2"].value)), int(float(line.attributes["y2"].value)))]))
     for polyline in tag_polyline:
         polylines_info.append(
             (polyline.attributes["class"].value, coordinate_extractor(polyline.attributes["points"].value, " ")))
@@ -82,31 +82,152 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                                                 '\t\t\t\t}\n'
 
     for shape in count_shapes:
-        if(shape[0] == )
+        if(shape[1] != 0):
+            if(shape[0] == "rect"):
 
-    html_javascript = html_javascript +
+                for rect_no in range(len(rects_info)):
+                    if (rects_info[rect_no][0] == 'cls-1'):
+                         pass
+
+                    if (rects_info[rect_no][0] == 'cls-2'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("blue"));\n' \
+                                         '\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.drawRect(' + str(rects_info[rect_no][1][0][0])\
+                                            + ', ' + str(rects_info[rect_no][1][0][1]) + ', ' + str(rects_info[rect_no][1][1][0]) + ', ' + str(rects_info[rect_no][1][1][1])\
+                                          + ');\n\n'
+
+                    if (rects_info[rect_no][0] == 'cls-3'):
+                        pass
+                    if (rects_info[rect_no][0] == 'cls-4'):
+                        pass
+                    if (rects_info[rect_no][0] == 'cls-5'):
+                        pass
+                    if (rects_info[rect_no][0] == 'cls-6'):
+                        pass
+
+            if(shape[0] == "circle"):
+                for circle_no in range(len(circles_info)):
+                    if (circles_info[circle_no][0] == 'cls-1'):
+                        pass
+                    if (circles_info[circle_no][0] == 'cls-2'):
+                        pass
+                    if (circles_info[circle_no][0] == 'cls-3'):
+                        pass
+                    if (circles_info[circle_no][0] == 'cls-4'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("red"));\n' \
+                                                            '\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.drawCircle' + str(circles_info[circle_no][1])\
+                                                            + ';\n\n' \
+
+                    if (circles_info[circle_no][0] == 'cls-5'):
+                        pass
+                    if (circles_info[circle_no][0] == 'cls-6'):
+                        pass
+
+            if (shape[0] == "ellipse"):
+                for ellipse in ellipses_info:
+                    if (ellipse[0] == 'cls-1'):
+                        pass
+                    if (ellipse[0] == 'cls-2'):
+                        pass
+                    if (ellipse[0] == 'cls-3'):
+                        pass
+                    if (ellipse[0] == 'cls-4'):
+                        pass
+                    if (ellipse[0] == 'cls-5'):
+                        pass
+                    if (ellipse[0] == 'cls-6'):
+                        pass
+
+            if (shape[0] == "line"):
+                for line_no in range(len(lines_info)):
+                    if (lines_info[line_no][0] == 'cls-1'):
+                        pass
+                    if (lines_info[line_no][0] == 'cls-2'):
+                        pass
+                    if (lines_info[line_no][0] == 'cls-3'):
+                        pass
+                    if (lines_info[line_no][0] == 'cls-4'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command);\n' \
+                                                            '\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.moveTo' + str(lines_info[line_no][1][0])
+                        for coordinate in range(1, len(lines_info[line_no][1])):
+                            html_javascript = html_javascript + '.lineTo' + str(lines_info[line_no][1][coordinate])
+                        html_javascript = html_javascript + ';\n\n'
+
+                    if (lines_info[line_no][0] == 'cls-5'):
+                        pass
+                    if (lines_info[line_no][0] == 'cls-6'):
+                        pass
+
+            if (shape[0] == "polyline"):
+                for polyline_no in range(len(polylines_info)):
+                    if (polylines_info[polyline_no][0] == 'cls-1'):
+                        pass
+
+                    if (polylines_info[polyline_no][0] == 'cls-2'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
+                                                            '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
+                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
+                            html_javascript = html_javascript + '.lineTo' + str(
+                                polylines_info[polyline_no][1][coordinate])
+                        html_javascript = html_javascript + ';\n\n'
+
+                    if (polylines_info[polyline_no][0] == 'cls-3'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
+                                           '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
+                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
+                            html_javascript = html_javascript + '.lineTo' + str(
+                                polylines_info[polyline_no][1][coordinate])
+                        html_javascript = html_javascript + ';\n\n'
+
+                    if (polylines_info[polyline_no][0] == 'cls-4'):
+                        pass
+                    if (polylines_info[polyline_no][0] == 'cls-5'):
+                        pass
+                    if (polylines_info[polyline_no][0] == 'cls-6'):
+                        pass
+
+            if (shape[0] == "polygon"):
+                for polygon_no in range(len(polygons_info)):
+                    if(polygons_info[polygon_no][0] == 'cls-1'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) +'].graphics.beginStroke("black").command);\n' \
+                                                            '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) +'].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
+                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
+                            html_javascript = html_javascript + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
+                        html_javascript = html_javascript + ';\n\n'
+
+                    if (polygons_info[polygon_no][0] == 'cls-2'):
+                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("red").command);\n' \
+                                                            '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
+                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
+                            html_javascript = html_javascript + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
+                        html_javascript = html_javascript + ';\n\n'
+
+                    if (polygons_info[polygon_no][0] == 'cls-3'):
+                        pass
+                    if (polygons_info[polygon_no][0] == 'cls-4'):
+                        pass
+                    if (polygons_info[polygon_no][0] == 'cls-5'):
+                        pass
+                    if (polygons_info[polygon_no][0] == 'cls-6'):
+                        pass
+
+    print(len(rects_info))
+
+    html_javascript = html_javascript + '\t\t\t\tstage.update();\n'
 
     html_javascript = html_javascript + '\t\t\t}\n\n'
 
 
     html_javascript = html_javascript + '\t\t</script>\n'
 
-
-
-    print(len(tag_polygon))
+    #print(polygons_info[0])
 
 
     html_preparetemplate("index2.html", "GariKhata Neighbourhood Plan",
                          ["../_shared/demo.css", "stylesheet", "text/css"],
-                         ["easeljs-0.8.2.min.js", "foo9.createjs.tooltip.js"], html_javascript)
+                         ["easeljs-0.8.2.min.js", "foo9.createjs.tooltip.js", "jquery-3.2.1.js"], html_javascript)
 
 
 
-
-
-
-
-    print(polygons_info)
 
     # Writing "init()" to "index.html"
     html_function_init = '\n\n\t\tfunction init()\n' \
@@ -131,7 +252,7 @@ def parse(xml_filename):                                        ##Takes a '.svg'
 
     #file.write(html_body)
 
-parse("GKSewageLines.svg")
+parse("GKBaseMap.svg")
 
 
 
