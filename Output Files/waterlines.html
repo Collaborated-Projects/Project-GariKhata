@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GariKhata Neighbourhood Plan</title>
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+	
+		<script>
+			var stage, showTip = false;
+			var tip = null;
+			fillObj = [];
+			polygons = [];
+			polylines = [];
+
+			function init()
+			{
+				stage = new createjs.Stage("gkCanvas");
+				for(var polylinenumber=0; polylinenumber<5; polylinenumber++)
+				{
+					polylines.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polygonnumber=0; polygonnumber<9; polygonnumber++)
+				{
+					polygons.push(stage.addChild(new createjs.Shape()));
+				}
+			}
+
+			function waterlines()
+			{
+				fillObj.push(polylines[0].graphics.beginStroke("black").command);
+				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
+
+				fillObj.push(polylines[1].graphics.beginStroke("black").command);
+				polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
+
+				fillObj.push(polylines[2].graphics.beginStroke("black").command);
+				polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
+
+				fillObj.push(polylines[3].graphics.beginStroke("black").command);
+				polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
+
+				fillObj.push(polylines[4].graphics.beginStroke("black").command);
+				polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
+
+				fillObj.push(polygons[0].graphics.beginStroke("black").command);
+				polygons[0].graphics.moveTo(520, 573).lineTo(529, 573).lineTo(787, 561).lineTo(804, 561).lineTo(804, 452).lineTo(784, 452).lineTo(520, 456).lineTo(520, 573);
+
+				fillObj.push(polygons[1].graphics.beginStroke("black").command);
+				polygons[1].graphics.moveTo(483, 780).lineTo(475, 780).lineTo(23, 763).lineTo(15, 763).lineTo(15, 754).lineTo(15, 621).lineTo(28, 621).lineTo(485, 604).lineTo(485, 612).lineTo(483, 780);
+
+				fillObj.push(polygons[2].graphics.beginStroke("black").command);
+				polygons[2].graphics.moveTo(518, 599).lineTo(517, 784).lineTo(530, 784).lineTo(787, 805).lineTo(803, 805).lineTo(803, 580).lineTo(784, 580).lineTo(525, 599).lineTo(518, 599);
+
+				fillObj.push(polygons[3].graphics.beginStroke("black").command);
+				polygons[3].graphics.moveTo(484, 579).lineTo(475, 579).lineTo(24, 596).lineTo(15, 596).lineTo(15, 484).lineTo(27, 484).lineTo(484, 460).lineTo(484, 579);
+
+				fillObj.push(polygons[4].graphics.beginStroke("black").command);
+				polygons[4].graphics.moveTo(12, 453).lineTo(27, 453).lineTo(57, 455).lineTo(484, 432).lineTo(484, 314).lineTo(475, 314).lineTo(308, 322).lineTo(73, 335).lineTo(24, 368).lineTo(12, 368).lineTo(12, 453);
+
+				fillObj.push(polygons[5].graphics.beginStroke("black").command);
+				polygons[5].graphics.moveTo(801, 421).lineTo(783, 421).lineTo(520, 427).lineTo(520, 318).lineTo(529, 318).lineTo(788, 312).lineTo(801, 312).lineTo(801, 421);
+
+				fillObj.push(polygons[6].graphics.beginStroke("black").command);
+				polygons[6].graphics.moveTo(801, 280).lineTo(801, 173).lineTo(782, 173).lineTo(652, 171).lineTo(529, 180).lineTo(520, 180).lineTo(520, 291).lineTo(584, 291).lineTo(665, 286).lineTo(801, 280);
+
+				fillObj.push(polygons[7].graphics.beginStroke("black").command);
+				polygons[7].graphics.moveTo(527, 145).lineTo(526, 48).lineTo(588, 18).lineTo(602, 15).lineTo(801, 9).lineTo(801, 141).lineTo(610, 141).lineTo(527, 145);
+
+				fillObj.push(polygons[8].graphics.beginStroke("black").command);
+				polygons[8].graphics.moveTo(494, 101).lineTo(488, 286).lineTo(365, 289).lineTo(131, 301).lineTo(127, 301).lineTo(147, 280).lineTo(487, 101).lineTo(494, 101);
+
+				stage.update();
+			}
+
+		</script>
+	</head>
+
+	<body onload="init();">
+		<canvas id="gkCanvas" width="825" height="825">
+			 Project GariKhata: GariKhata Neighbourhood Plan 
+		</canvas>
+	</body>
+</html>

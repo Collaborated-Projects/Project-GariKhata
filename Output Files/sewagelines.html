@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GariKhata Neighbourhood Plan</title>
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+	
+		<script>
+			var stage, showTip = false;
+			var tip = null;
+			fillObj = [];
+			polygons = [];
+			polylines = [];
+			circles = [];
+
+			function init()
+			{
+				stage = new createjs.Stage("gkCanvas");
+				for(var circlenumber=0; circlenumber<55; circlenumber++)
+				{
+					circles.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polylinenumber=0; polylinenumber<6; polylinenumber++)
+				{
+					polylines.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polygonnumber=0; polygonnumber<9; polygonnumber++)
+				{
+					polygons.push(stage.addChild(new createjs.Shape()));
+				}
+			}
+
+			function sewagelines()
+			{
+				fillObj.push(circles[0].graphics.beginFill("red"));
+				circles[0].graphics.drawCircle(790, 149, 3);
+
+				fillObj.push(circles[1].graphics.beginFill("red"));
+				circles[1].graphics.drawCircle(725, 149, 3);
+
+				fillObj.push(circles[2].graphics.beginFill("red"));
+				circles[2].graphics.drawCircle(675, 148, 3);
+
+				fillObj.push(circles[3].graphics.beginFill("red"));
+				circles[3].graphics.drawCircle(641, 147, 3);
+
+				fillObj.push(circles[4].graphics.beginFill("red"));
+				circles[4].graphics.drawCircle(557, 151, 3);
+
+				fillObj.push(circles[5].graphics.beginFill("red"));
+				circles[5].graphics.drawCircle(515, 154, 3);
+
+				fillObj.push(circles[6].graphics.beginFill("red"));
+				circles[6].graphics.drawCircle(496, 102, 3);
+
+				fillObj.push(circles[7].graphics.beginFill("red"));
+				circles[7].graphics.drawCircle(495, 141, 3);
+
+				fillObj.push(circles[8].graphics.beginFill("red"));
+				circles[8].graphics.drawCircle(494, 156, 3);
+
+				fillObj.push(circles[9].graphics.beginFill("red"));
+				circles[9].graphics.drawCircle(493, 180, 3);
+
+				fillObj.push(circles[10].graphics.beginFill("red"));
+				circles[10].graphics.drawCircle(490, 238, 3);
+
+				fillObj.push(circles[11].graphics.beginFill("red"));
+				circles[11].graphics.drawCircle(488, 301, 3);
+
+				fillObj.push(circles[12].graphics.beginFill("red"));
+				circles[12].graphics.drawCircle(526, 296, 3);
+
+				fillObj.push(circles[13].graphics.beginFill("red"));
+				circles[13].graphics.drawCircle(611, 294, 3);
+
+				fillObj.push(circles[14].graphics.beginFill("red"));
+				circles[14].graphics.drawCircle(591, 296, 3);
+
+				fillObj.push(circles[15].graphics.beginFill("red"));
+				circles[15].graphics.drawCircle(678, 291, 3);
+
+				fillObj.push(circles[16].graphics.beginFill("red"));
+				circles[16].graphics.drawCircle(753, 288, 3);
+
+				fillObj.push(circles[17].graphics.beginFill("red"));
+				circles[17].graphics.drawCircle(789, 286, 3);
+
+				fillObj.push(circles[18].graphics.beginFill("red"));
+				circles[18].graphics.drawCircle(393, 294, 3);
+
+				fillObj.push(circles[19].graphics.beginFill("red"));
+				circles[19].graphics.drawCircle(343, 297, 3);
+
+				fillObj.push(circles[20].graphics.beginFill("red"));
+				circles[20].graphics.drawCircle(263, 300, 3);
+
+				fillObj.push(circles[21].graphics.beginFill("red"));
+				circles[21].graphics.drawCircle(180, 304, 3);
+
+				fillObj.push(circles[22].graphics.beginFill("red"));
+				circles[22].graphics.drawCircle(90, 306, 3);
+
+				fillObj.push(circles[23].graphics.beginFill("red"));
+				circles[23].graphics.drawCircle(791, 446, 3);
+
+				fillObj.push(circles[24].graphics.beginFill("red"));
+				circles[24].graphics.drawCircle(732, 446, 3);
+
+				fillObj.push(circles[25].graphics.beginFill("red"));
+				circles[25].graphics.drawCircle(661, 448, 3);
+
+				fillObj.push(circles[26].graphics.beginFill("red"));
+				circles[26].graphics.drawCircle(621, 448, 3);
+
+				fillObj.push(circles[27].graphics.beginFill("red"));
+				circles[27].graphics.drawCircle(569, 448, 3);
+
+				fillObj.push(circles[28].graphics.beginFill("red"));
+				circles[28].graphics.drawCircle(508, 448, 3);
+
+				fillObj.push(circles[29].graphics.beginFill("red"));
+				circles[29].graphics.drawCircle(488, 444, 3);
+
+				fillObj.push(circles[30].graphics.beginFill("red"));
+				circles[30].graphics.drawCircle(489, 375, 3);
+
+				fillObj.push(circles[31].graphics.beginFill("red"));
+				circles[31].graphics.drawCircle(472, 455, 3);
+
+				fillObj.push(circles[32].graphics.beginFill("red"));
+				circles[32].graphics.drawCircle(414, 457, 3);
+
+				fillObj.push(circles[33].graphics.beginFill("red"));
+				circles[33].graphics.drawCircle(367, 460, 3);
+
+				fillObj.push(circles[34].graphics.beginFill("red"));
+				circles[34].graphics.drawCircle(325, 462, 3);
+
+				fillObj.push(circles[35].graphics.beginFill("red"));
+				circles[35].graphics.drawCircle(262, 466, 3);
+
+				fillObj.push(circles[36].graphics.beginFill("red"));
+				circles[36].graphics.drawCircle(169, 471, 3);
+
+				fillObj.push(circles[37].graphics.beginFill("red"));
+				circles[37].graphics.drawCircle(120, 474, 3);
+
+				fillObj.push(circles[38].graphics.beginFill("red"));
+				circles[38].graphics.drawCircle(101, 459, 3);
+
+				fillObj.push(circles[39].graphics.beginFill("red"));
+				circles[39].graphics.drawCircle(46, 462, 3);
+
+				fillObj.push(circles[40].graphics.beginFill("red"));
+				circles[40].graphics.drawCircle(728, 577, 3);
+
+				fillObj.push(circles[41].graphics.beginFill("red"));
+				circles[41].graphics.drawCircle(685, 581, 3);
+
+				fillObj.push(circles[42].graphics.beginFill("red"));
+				circles[42].graphics.drawCircle(567, 588, 3);
+
+				fillObj.push(circles[43].graphics.beginFill("red"));
+				circles[43].graphics.drawCircle(489, 588, 3);
+
+				fillObj.push(circles[44].graphics.beginFill("red"));
+				circles[44].graphics.drawCircle(489, 527, 3);
+
+				fillObj.push(circles[45].graphics.beginFill("red"));
+				circles[45].graphics.drawCircle(472, 598, 3);
+
+				fillObj.push(circles[46].graphics.beginFill("red"));
+				circles[46].graphics.drawCircle(415, 602, 3);
+
+				fillObj.push(circles[47].graphics.beginFill("red"));
+				circles[47].graphics.drawCircle(367, 604, 3);
+
+				fillObj.push(circles[48].graphics.beginFill("red"));
+				circles[48].graphics.drawCircle(338, 588, 3);
+
+				fillObj.push(circles[49].graphics.beginFill("red"));
+				circles[49].graphics.drawCircle(308, 605, 3);
+
+				fillObj.push(circles[50].graphics.beginFill("red"));
+				circles[50].graphics.drawCircle(252, 605, 3);
+
+				fillObj.push(circles[51].graphics.beginFill("red"));
+				circles[51].graphics.drawCircle(213, 594, 3);
+
+				fillObj.push(circles[52].graphics.beginFill("red"));
+				circles[52].graphics.drawCircle(90, 605, 3);
+
+				fillObj.push(circles[53].graphics.beginFill("red"));
+				circles[53].graphics.drawCircle(3, 609, 3);
+
+				fillObj.push(circles[54].graphics.beginFill("red"));
+				circles[54].graphics.drawCircle(489, 749, 3);
+
+				fillObj.push(polylines[0].graphics.beginStroke("black").command);
+				polylines[0].graphics.moveTo(802, 149).lineTo(641, 147).lineTo(599, 147).lineTo(494, 156);
+
+				fillObj.push(polylines[1].graphics.beginStroke("black").command);
+				polylines[1].graphics.moveTo(802, 805).lineTo(802, 573).lineTo(802, 0);
+
+				fillObj.push(polylines[3].graphics.beginStroke("black").command);
+				polylines[3].graphics.moveTo(90, 306).lineTo(393, 295).lineTo(489, 301).lineTo(538, 295).lineTo(580, 295).lineTo(802, 285);
+
+				fillObj.push(polylines[4].graphics.beginStroke("black").command);
+				polylines[4].graphics.moveTo(1, 459).lineTo(46, 462).lineTo(101, 459).lineTo(119, 474).lineTo(473, 455).lineTo(489, 443).lineTo(508, 449).lineTo(802, 447);
+
+				fillObj.push(polylines[5].graphics.beginStroke("black").command);
+				polylines[5].graphics.moveTo(3, 609).lineTo(142, 604).lineTo(213, 593).lineTo(250, 605).lineTo(308, 605).lineTo(338, 588).lineTo(367, 604).lineTo(473, 598).lineTo(489, 588).lineTo(508, 593).lineTo(611, 586).lineTo(769, 575).lineTo(802, 573);
+
+				fillObj.push(polygons[0].graphics.beginStroke("black").command);
+				polygons[0].graphics.moveTo(508, 573).lineTo(517, 573).lineTo(776, 561).lineTo(792, 561).lineTo(792, 452).lineTo(772, 452).lineTo(508, 456).lineTo(508, 573);
+
+				fillObj.push(polygons[1].graphics.beginStroke("black").command);
+				polygons[1].graphics.moveTo(472, 780).lineTo(463, 780).lineTo(11, 763).lineTo(3, 763).lineTo(3, 754).lineTo(4, 621).lineTo(16, 621).lineTo(473, 604).lineTo(473, 612).lineTo(472, 780);
+
+				fillObj.push(polygons[2].graphics.beginStroke("black").command);
+				polygons[2].graphics.moveTo(507, 599).lineTo(506, 784).lineTo(518, 784).lineTo(776, 805).lineTo(791, 805).lineTo(791, 580).lineTo(772, 580).lineTo(513, 599).lineTo(507, 599);
+
+				fillObj.push(polygons[3].graphics.beginStroke("black").command);
+				polygons[3].graphics.moveTo(472, 579).lineTo(464, 579).lineTo(12, 596).lineTo(4, 596).lineTo(3, 484).lineTo(15, 484).lineTo(472, 460).lineTo(472, 579);
+
+				fillObj.push(polygons[4].graphics.beginStroke("black").command);
+				polygons[4].graphics.moveTo(1, 453).lineTo(16, 453).lineTo(46, 455).lineTo(472, 432).lineTo(472, 314).lineTo(463, 314).lineTo(296, 322).lineTo(62, 335).lineTo(13, 368).lineTo(1, 368).lineTo(1, 453);
+
+				fillObj.push(polygons[5].graphics.beginStroke("black").command);
+				polygons[5].graphics.moveTo(789, 421).lineTo(772, 421).lineTo(508, 427).lineTo(508, 318).lineTo(517, 318).lineTo(777, 312).lineTo(789, 312).lineTo(789, 421);
+
+				fillObj.push(polygons[6].graphics.beginStroke("black").command);
+				polygons[6].graphics.moveTo(789, 280).lineTo(789, 173).lineTo(770, 173).lineTo(641, 171).lineTo(518, 180).lineTo(508, 180).lineTo(508, 291).lineTo(572, 291).lineTo(653, 286).lineTo(789, 280);
+
+				fillObj.push(polygons[7].graphics.beginStroke("black").command);
+				polygons[7].graphics.moveTo(515, 145).lineTo(515, 48).lineTo(576, 18).lineTo(590, 15).lineTo(790, 9).lineTo(790, 141).lineTo(598, 141).lineTo(515, 145);
+
+				fillObj.push(polygons[8].graphics.beginStroke("black").command);
+				polygons[8].graphics.moveTo(482, 101).lineTo(477, 286).lineTo(353, 289).lineTo(119, 301).lineTo(116, 301).lineTo(136, 280).lineTo(475, 101).lineTo(482, 101);
+
+				stage.update();
+			}
+
+		</script>
+	</head>
+
+	<body onload="init();">
+		<canvas id="gkCanvas" width="825" height="825">
+			 Project GariKhata: GariKhata Neighbourhood Plan 
+		</canvas>
+	</body>
+</html>

@@ -5,8 +5,7 @@ from global_manager import *        #(custom  module)
 from html_manager import *          #(custom  module)
 
 
-
-def parse(xml_filename):                                        ##Takes a '.svg' file and generates an 'html' file from it
+def parse(xml_filename, html_filename):                     ##Takes a '.svg' file and generates an 'html' file from it
     shapes_list = xml_shapename_extractor(xml_filename)
 
     # Parsing a '.svg' file by tag names
@@ -41,9 +40,8 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                               int(float(circle.attributes["r"].value)))))
     for ellipse in tag_ellipse:
         ellipses_info.append((ellipse.attributes["class"].value,
-                              int((float(ellipse.attributes["cx"].value)), int(float(ellipse.attributes["cy"].value)),
-                                  int(float(ellipse.attributes["rx"].value)),
-                                  int(float(ellipse.attributes["ry"].value)))))
+                           [(int(float(ellipse.attributes["x"].value)), int(float(ellipse.attributes["y"].value))),
+                            (int(float(ellipse.attributes["width"].value)), int(float(ellipse.attributes["height"].value)))]))
     for line in tag_line:
         lines_info.append((line.attributes["class"].value,
                            [(int(float(line.attributes["x1"].value)), int(float(line.attributes["y1"].value))),
@@ -58,7 +56,7 @@ def parse(xml_filename):                                        ##Takes a '.svg'
     ##Shapes deep information ends!
 
     ##List containing tuples of shape name and shape count
-    count_shapes = [("rect", len(rects_info)), ("circle", len(circles_info)), ("ellipse", len(ellipses_info)), ("line", lines_info),
+    count_shapes = [("rect", len(rects_info)), ("circle", len(circles_info)), ("ellipse", len(ellipses_info)), ("line", len(lines_info)),
                     ("polyline", len(polylines_info)), ("polygon", len(polygons_info))]
 
     html_javascript = '\t'
@@ -71,16 +69,18 @@ def parse(xml_filename):                                        ##Takes a '.svg'
     html_javascript = html_javascript + '\n'
 
                                                                             ##canvas name hard-coded. FIX IT!
-    html_javascript = html_javascript + '\t\t\tfunction init()\n' \
-                                        '\t\t\t{\n' \
-                                        '\t\t\t\tstage = new createjs.Stage("gkCanvas");\n'
+    html_function_init = ""
+    html_function_init = html_function_init + '\t\t\t\tstage = new createjs.Stage("gkCanvas");\n'
+
+
     for shape in count_shapes:
         if(shape[0] in shapes_list):
-            html_javascript = html_javascript + '\t\t\t\tfor(var ' + shape[0] + 'number=0; ' + shape[0] + 'number<' + str(shape[1]) + '; ' + shape[0] + 'number++)\n' \
+            html_function_init = html_function_init + '\t\t\t\tfor(var ' + shape[0] + 'number=0; ' + shape[0] + 'number<' + str(shape[1]) + '; ' + shape[0] + 'number++)\n' \
                                                 '\t\t\t\t{\n' \
                                                 '\t\t\t\t\t' + shape[0] + 's.push(stage.addChild(new createjs.Shape()));\n' \
                                                 '\t\t\t\t}\n'
 
+    html_function_shape = ""
     for shape in count_shapes:
         if(shape[1] != 0):
             if(shape[0] == "rect"):
@@ -90,7 +90,7 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                          pass
 
                     if (rects_info[rect_no][0] == 'cls-2'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("blue"));\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("blue"));\n' \
                                          '\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.drawRect(' + str(rects_info[rect_no][1][0][0])\
                                             + ', ' + str(rects_info[rect_no][1][0][1]) + ', ' + str(rects_info[rect_no][1][1][0]) + ', ' + str(rects_info[rect_no][1][1][1])\
                                           + ');\n\n'
@@ -113,7 +113,7 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                     if (circles_info[circle_no][0] == 'cls-3'):
                         pass
                     if (circles_info[circle_no][0] == 'cls-4'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("red"));\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("red"));\n' \
                                                             '\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.drawCircle' + str(circles_info[circle_no][1])\
                                                             + ';\n\n' \
 
@@ -137,6 +137,7 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                     if (ellipse[0] == 'cls-6'):
                         pass
 
+
             if (shape[0] == "line"):
                 for line_no in range(len(lines_info)):
                     if (lines_info[line_no][0] == 'cls-1'):
@@ -146,11 +147,11 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                     if (lines_info[line_no][0] == 'cls-3'):
                         pass
                     if (lines_info[line_no][0] == 'cls-4'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command);\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command);\n' \
                                                             '\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.moveTo' + str(lines_info[line_no][1][0])
                         for coordinate in range(1, len(lines_info[line_no][1])):
-                            html_javascript = html_javascript + '.lineTo' + str(lines_info[line_no][1][coordinate])
-                        html_javascript = html_javascript + ';\n\n'
+                            html_function_shape = html_function_shape + '.lineTo' + str(lines_info[line_no][1][coordinate])
+                        html_function_shape = html_function_shape + ';\n\n'
 
                     if (lines_info[line_no][0] == 'cls-5'):
                         pass
@@ -163,20 +164,20 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                         pass
 
                     if (polylines_info[polyline_no][0] == 'cls-2'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
                                                             '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
                         for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_javascript = html_javascript + '.lineTo' + str(
+                            html_function_shape = html_function_shape + '.lineTo' + str(
                                 polylines_info[polyline_no][1][coordinate])
-                        html_javascript = html_javascript + ';\n\n'
+                        html_function_shape = html_function_shape + ';\n\n'
 
                     if (polylines_info[polyline_no][0] == 'cls-3'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
                                            '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
                         for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_javascript = html_javascript + '.lineTo' + str(
+                            html_function_shape = html_function_shape + '.lineTo' + str(
                                 polylines_info[polyline_no][1][coordinate])
-                        html_javascript = html_javascript + ';\n\n'
+                        html_function_shape = html_function_shape + ';\n\n'
 
                     if (polylines_info[polyline_no][0] == 'cls-4'):
                         pass
@@ -188,18 +189,18 @@ def parse(xml_filename):                                        ##Takes a '.svg'
             if (shape[0] == "polygon"):
                 for polygon_no in range(len(polygons_info)):
                     if(polygons_info[polygon_no][0] == 'cls-1'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) +'].graphics.beginStroke("black").command);\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) +'].graphics.beginStroke("black").command);\n' \
                                                             '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) +'].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
                         for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_javascript = html_javascript + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_javascript = html_javascript + ';\n\n'
+                            html_function_shape = html_function_shape + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
+                        html_function_shape = html_function_shape + ';\n\n'
 
                     if (polygons_info[polygon_no][0] == 'cls-2'):
-                        html_javascript = html_javascript + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("red").command);\n' \
+                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("red").command);\n' \
                                                             '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
                         for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_javascript = html_javascript + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_javascript = html_javascript + ';\n\n'
+                            html_function_shape = html_function_shape + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
+                        html_function_shape = html_function_shape + ';\n\n'
 
                     if (polygons_info[polygon_no][0] == 'cls-3'):
                         pass
@@ -210,293 +211,16 @@ def parse(xml_filename):                                        ##Takes a '.svg'
                     if (polygons_info[polygon_no][0] == 'cls-6'):
                         pass
 
-    print(len(rects_info))
+    html_function_shape = html_function_shape + '\t\t\t\tstage.update();\n'
 
-    html_javascript = html_javascript + '\t\t\t\tstage.update();\n'
-
-    html_javascript = html_javascript + '\t\t\t}\n\n'
-
-
-    html_javascript = html_javascript + '\t\t</script>\n'
 
     #print(polygons_info[0])
 
 
-    html_preparetemplate("index2.html", "GariKhata Neighbourhood Plan",
-                         ["../_shared/demo.css", "stylesheet", "text/css"],
-                         ["easeljs-0.8.2.min.js", "foo9.createjs.tooltip.js", "jquery-3.2.1.js"], html_javascript)
+    html_preparetemplate(html_filename, "GariKhata Neighbourhood Plan",
+                         ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css"],
+                         ["../Libraries used/js/easeljs-0.8.2.min.js", "../Libraries used/js/foo9.createjs.tooltip.js", "../Libraries used/js/jquery-3.2.1.js"],
+                         html_javascript, [("init()", html_function_init), ("waterlines()", html_function_shape)])
 
 
-
-
-    # Writing "init()" to "index.html"
-    html_function_init = '\n\n\t\tfunction init()\n' \
-                         '\t\t{\n' \
-                            '\t\t\tstage = new createjs.Stage("gkCanvas");\n'
-    #file.write(html_function_init)
-
-    number_of_shapes_plus_shapes = [("polygons", str(len(tag_polygon))), ("polylines", str(len(tag_polyline))), ("lines", str(len(tag_line))),
-                                    ("rects", str(len(tag_rect))), ("circles", str(len(tag_circle)))]
-
-    html_function_init = ''
-    for shapes in number_of_shapes_plus_shapes:
-        html_function_init = html_function_init + '\n\t\t\tfor(var i = 0; i < ' + shapes[1] + '; i++)\n'
-        html_function_init = html_function_init + '\t\t\t{\n'
-        html_function_init = html_function_init + '\t\t\t\t' + shapes[0] + '.push(stage.addChild(new createjs.Shape()))\n'
-        html_function_init = html_function_init + '\t\t\t}'
-    #file.write(html_function_init)
-
-
-    html_body = '\n\tstage.update();\n\t</script>\n</head>\n\n<body onload="init();">\n\t<canvas id="gkCanvas" width="1200" height="1200">\n' \
-                '\t\talternate content\n\t</canvas>\n</body>\n</html>'
-
-    #file.write(html_body)
-
-parse("GKBaseMap.svg")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#for s in tag_g:
-    #     attribute = s.attributes["id"].value
-    #
-    #     # These attributes are requirement dependent. The code is only written for the attributes provided in the sample .svg files
-    #     if(attribute == "Block_Line"):
-    #         #Drawing for polygons
-    #         blck_num = 0
-    #         for polygon in tag_polygon:
-    #             check_class = polygon.attributes["class"].value         ##Checks whether filled polygon is to be drawn or not
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #             html_polygon = ''
-    #
-    #             if(check_class == "cls-1"):
-    #                 pass
-    #             elif(check_class == "cls-2"):
-    #                 pass
-    #             elif (check_class == "cls-3"):
-    #                 pass
-    #             elif (check_class == "cls-4"):
-    #                 pass
-    #             elif (check_class == "cls-5"):
-    #                 pass
-    #
-    #
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     elif(attribute == "Plot_Profile"):
-    #         # Drawing for polygons
-    #         for polygon in tag_polygon:
-    #             ###check_class = polygon.attributes["class"].value
-    #
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     elif(attribute == "Building_Line"):
-    #         # Drawing for polygons
-    #         for polygon in tag_polygon:
-    #             ###check_class = polygon.attributes["class"].value
-    #
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     elif (attribute == "Gas_Lines"):
-    #         # Drawing for polygons
-    #         for polygon in tag_polygon:
-    #             ###check_class = polygon.attributes["class"].value
-    #
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     elif (attribute == "Sewage"):
-    #         # Drawing for polygons
-    #         for polygon in tag_polygon:
-    #             ###check_class = polygon.attributes["class"].value
-    #
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     elif (attribute == "Water"):
-    #         # Drawing for polygons
-    #         for polygon in tag_polygon:
-    #             ###check_class = polygon.attributes["class"].value
-    #
-    #             points_polygon = polygon.attributes["points"].value
-    #             xy_coordinates = extractor(points_polygon)
-    #
-    #         # Drawing for polylines
-    #         for polyline in tag_polygon:
-    #             points_polyline = polyline.attributes["points"].value
-    #             xy_coordinates = extractor(points_polyline)
-    #
-    #         # Drawing for lines
-    #         for line in tag_line:
-    #             points_line = line.attributes["points"].value
-    #             xy_coordinates = extractor(points_line)
-    #
-    #         '''
-    #         #Drawing for rects
-    #         for rect in tag_rect:
-    #             points_rect = rect.attributes["points"].value
-    #             xy_coordinates = extractor(points_rect)
-    #
-    #         #python error
-    #         '''
-    #
-    #         # Drawing for circles
-    #         for circle in tag_circle:
-    #             points_circle = circle.attributes["points"].value
-    #             xy_coordinates = extractor(points_circle)
-    #
-    #     else:
-    #         pass
+parse("GKWaterLines.svg", "../Output Files/waterlines.html")

@@ -1,3 +1,5 @@
 open_data_kit (odk) files
 open_data_kit (odk) files/ODK Aggregate/appengine-java-sdk/ABOUT
 *.cmd
+odk files
+*.pyc

@@ -2,10 +2,11 @@
 <html>
 	<head>
 		<title>GariKhata Neighbourhood Plan</title>
-		<link href="text/css" rel="../_shared/demo.css" type= stylesheet>
-		<script src="easeljs-0.8.2.min.js"></script> 
-		<script src="foo9.createjs.tooltip.js"></script> 
-		<script src="jquery-3.2.1.js"></script> 
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
 	
 		<script>
 			var stage, showTip = false;
@@ -20,6 +21,10 @@
 				{
 					polygons.push(stage.addChild(new createjs.Shape()));
 				}
+			}
+
+			function basemap()
+			{
 				fillObj.push(polygons[0].graphics.beginStroke("black").command);
 				polygons[0].graphics.moveTo(508, 564).lineTo(516, 564).lineTo(775, 552).lineTo(792, 552).lineTo(792, 443).lineTo(772, 443).lineTo(508, 446).lineTo(508, 564);
 
@@ -81,7 +86,7 @@
 	</head>
 
 	<body onload="init();">
-		<canvas id="gkCanvas" width="1200" height="1200">
+		<canvas id="gkCanvas" width="825" height="825">
 			 Project GariKhata: GariKhata Neighbourhood Plan 
 		</canvas>
 	</body>

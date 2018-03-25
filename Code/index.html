@@ -1,49 +1,94 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>GariKhata Neighbourhood Plan</title>
-	<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
-	<script src="easeljs-0.8.2.min.js"></script>
-	<script src="foo9.createjs.tooltip.js"></script>
-	<script>
-		var stage, showTip = false;
-		var tip = null;
-		fillObj = [];
-		var polygons = [];
-		var polylines = [];
-		var circles = [];
+	<head>
+		<title>GariKhata Neighbourhood Plan</title>
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+	
+		<script>
+			var stage, showTip = false;
+			var tip = null;
+			fillObj = [];
+			polygons = [];
 
-		function init()
-		{
-			stage = new createjs.Stage("gkCanvas");
+			function init()
+			{
+				stage = new createjs.Stage("gkCanvas");
+				for(var polygonnumber=0; polygonnumber<18; polygonnumber++)
+				{
+					polygons.push(stage.addChild(new createjs.Shape()));
+				}
+			}
 
-			for(var i = 0; i < 9; i++)
+			function waterlines()
 			{
-				polygons.push(stage.addChild(new createjs.Shape()))
-			}
-			for(var i = 0; i < 6; i++)
-			{
-				polylines.push(stage.addChild(new createjs.Shape()))
-			}
-			for(var i = 0; i < 0; i++)
-			{
-				lines.push(stage.addChild(new createjs.Shape()))
-			}
-			for(var i = 0; i < 0; i++)
-			{
-				rects.push(stage.addChild(new createjs.Shape()))
-			}
-			for(var i = 0; i < 55; i++)
-			{
-				circles.push(stage.addChild(new createjs.Shape()))
-			}
-	stage.update();
-	</script>
-</head>
+				fillObj.push(polygons[0].graphics.beginStroke("black").command);
+				polygons[0].graphics.moveTo(508, 564).lineTo(516, 564).lineTo(775, 552).lineTo(792, 552).lineTo(792, 443).lineTo(772, 443).lineTo(508, 446).lineTo(508, 564);
 
-<body onload="init();">
-	<canvas id="gkCanvas" width="1200" height="1200">
-		alternate content
-	</canvas>
-</body>
+				fillObj.push(polygons[1].graphics.beginStroke("black").command);
+				polygons[1].graphics.moveTo(471, 771).lineTo(463, 771).lineTo(11, 754).lineTo(3, 754).lineTo(3, 744).lineTo(3, 612).lineTo(16, 612).lineTo(473, 594).lineTo(473, 603).lineTo(471, 771);
+
+				fillObj.push(polygons[2].graphics.beginStroke("black").command);
+				polygons[2].graphics.moveTo(506, 590).lineTo(505, 775).lineTo(517, 775).lineTo(775, 796).lineTo(791, 796).lineTo(791, 570).lineTo(772, 570).lineTo(513, 590).lineTo(506, 590);
+
+				fillObj.push(polygons[3].graphics.beginStroke("black").command);
+				polygons[3].graphics.moveTo(472, 570).lineTo(463, 570).lineTo(11, 587).lineTo(3, 587).lineTo(3, 475).lineTo(15, 474).lineTo(472, 451).lineTo(472, 570);
+
+				fillObj.push(polygons[4].graphics.beginStroke("black").command);
+				polygons[4].graphics.moveTo(0, 444).lineTo(15, 444).lineTo(45, 445).lineTo(472, 423).lineTo(472, 305).lineTo(463, 305).lineTo(296, 312).lineTo(61, 326).lineTo(12, 359).lineTo(0, 359).lineTo(0, 444);
+
+				fillObj.push(polygons[5].graphics.beginStroke("black").command);
+				polygons[5].graphics.moveTo(789, 411).lineTo(771, 411).lineTo(508, 417).lineTo(507, 308).lineTo(517, 308).lineTo(776, 302).lineTo(789, 302).lineTo(789, 411);
+
+				fillObj.push(polygons[6].graphics.beginStroke("black").command);
+				polygons[6].graphics.moveTo(789, 271).lineTo(789, 163).lineTo(770, 163).lineTo(640, 161).lineTo(517, 170).lineTo(507, 170).lineTo(507, 281).lineTo(571, 281).lineTo(653, 277).lineTo(789, 271);
+
+				fillObj.push(polygons[7].graphics.beginStroke("black").command);
+				polygons[7].graphics.moveTo(514, 136).lineTo(514, 39).lineTo(576, 9).lineTo(589, 6).lineTo(789, 0).lineTo(789, 132).lineTo(598, 132).lineTo(514, 136);
+
+				fillObj.push(polygons[8].graphics.beginStroke("black").command);
+				polygons[8].graphics.moveTo(482, 92).lineTo(476, 277).lineTo(353, 280).lineTo(119, 291).lineTo(115, 291).lineTo(135, 271).lineTo(475, 92).lineTo(482, 92);
+
+				fillObj.push(polygons[9].graphics.beginFill("red").command);
+				polygons[9].graphics.moveTo(13, 620).lineTo(13, 748).lineTo(465, 764).lineTo(465, 599).lineTo(13, 620);
+
+				fillObj.push(polygons[10].graphics.beginFill("red").command);
+				polygons[10].graphics.moveTo(515, 599).lineTo(515, 764).lineTo(773, 785).lineTo(773, 579).lineTo(515, 599);
+
+				fillObj.push(polygons[11].graphics.beginFill("red").command);
+				polygons[11].graphics.moveTo(13, 483).lineTo(13, 576).lineTo(465, 560).lineTo(465, 459).lineTo(13, 483);
+
+				fillObj.push(polygons[12].graphics.beginFill("red").command);
+				polygons[12].graphics.moveTo(514, 453).lineTo(514, 552).lineTo(773, 542).lineTo(773, 450).lineTo(514, 453);
+
+				fillObj.push(polygons[13].graphics.beginFill("red").command);
+				polygons[13].graphics.moveTo(13, 366).lineTo(13, 435).lineTo(46, 437).lineTo(75, 435).lineTo(465, 415).lineTo(465, 310).lineTo(64, 334).lineTo(38, 349).lineTo(13, 366);
+
+				fillObj.push(polygons[14].graphics.beginFill("red").command);
+				polygons[14].graphics.moveTo(514, 315).lineTo(514, 413).lineTo(773, 404).lineTo(773, 309).lineTo(514, 315);
+
+				fillObj.push(polygons[15].graphics.beginFill("red").command);
+				polygons[15].graphics.moveTo(521, 176).lineTo(521, 207).lineTo(507, 207).lineTo(507, 280).lineTo(571, 280).lineTo(571, 273).lineTo(648, 268).lineTo(773, 264).lineTo(773, 170).lineTo(640, 169).lineTo(521, 176);
+
+				fillObj.push(polygons[16].graphics.beginFill("red").command);
+				polygons[16].graphics.moveTo(521, 47).lineTo(521, 128).lineTo(595, 125).lineTo(772, 125).lineTo(772, 12).lineTo(590, 17).lineTo(544, 37).lineTo(521, 47);
+
+				fillObj.push(polygons[17].graphics.beginFill("red").command);
+				polygons[17].graphics.moveTo(469, 268).lineTo(355, 272).lineTo(132, 282).lineTo(476, 101).lineTo(469, 268);
+
+				stage.update();
+			}
+
+		</script>
+	</head>
+
+	<body onload="init();">
+		<canvas id="gkCanvas" width="825" height="825">
+			 Project GariKhata: GariKhata Neighbourhood Plan 
+		</canvas>
+		<button class="btn btn-default" onclick="waterlines();">Hello</button>
+	</body>
 </html>

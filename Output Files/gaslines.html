@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GariKhata Neighbourhood Plan</title>
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+	
+		<script>
+			var stage, showTip = false;
+			var tip = null;
+			fillObj = [];
+			polygons = [];
+			polylines = [];
+			lines = [];
+
+			function init()
+			{
+				stage = new createjs.Stage("gkCanvas");
+				for(var linenumber=0; linenumber<1; linenumber++)
+				{
+					lines.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polylinenumber=0; polylinenumber<5; polylinenumber++)
+				{
+					polylines.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polygonnumber=0; polygonnumber<9; polygonnumber++)
+				{
+					polygons.push(stage.addChild(new createjs.Shape()));
+				}
+			}
+
+			function gaslines()
+			{
+				fillObj.push(lines[0].graphics.beginStroke("black").command);
+				lines[0].graphics.moveTo(1, 477).lineTo(1, 349);
+
+				fillObj.push(polylines[0].graphics.beginStroke("black").command);
+				polylines[0].graphics.moveTo(815, 805).lineTo(815, 573).lineTo(815, 0);
+
+				fillObj.push(polylines[1].graphics.beginStroke("black").command);
+				polylines[1].graphics.moveTo(815, 573).lineTo(805, 574).lineTo(541, 593).lineTo(32, 617).lineTo(17, 617);
+
+				fillObj.push(polylines[2].graphics.beginStroke("black").command);
+				polylines[2].graphics.moveTo(815, 446).lineTo(521, 452).lineTo(487, 452).lineTo(14, 477).lineTo(1, 477);
+
+				fillObj.push(polylines[3].graphics.beginStroke("black").command);
+				polylines[3].graphics.moveTo(815, 307).lineTo(521, 312).lineTo(486, 307).lineTo(70, 330).lineTo(14, 361).lineTo(1, 361);
+
+				fillObj.push(polylines[4].graphics.beginStroke("black").command);
+				polylines[4].graphics.moveTo(521, 171).lineTo(654, 163).lineTo(815, 167);
+
+				fillObj.push(polygons[0].graphics.beginStroke("black").command);
+				polygons[0].graphics.moveTo(521, 573).lineTo(530, 573).lineTo(789, 561).lineTo(805, 561).lineTo(805, 452).lineTo(785, 452).lineTo(521, 456).lineTo(521, 573);
+
+				fillObj.push(polygons[1].graphics.beginStroke("black").command);
+				polygons[1].graphics.moveTo(485, 780).lineTo(476, 780).lineTo(24, 763).lineTo(17, 763).lineTo(17, 754).lineTo(17, 621).lineTo(29, 621).lineTo(487, 604).lineTo(487, 612).lineTo(485, 780);
+
+				fillObj.push(polygons[2].graphics.beginStroke("black").command);
+				polygons[2].graphics.moveTo(520, 599).lineTo(519, 784).lineTo(531, 784).lineTo(789, 805).lineTo(804, 805).lineTo(804, 580).lineTo(785, 580).lineTo(526, 599).lineTo(520, 599);
+
+				fillObj.push(polygons[3].graphics.beginStroke("black").command);
+				polygons[3].graphics.moveTo(486, 579).lineTo(477, 579).lineTo(25, 596).lineTo(17, 596).lineTo(17, 484).lineTo(29, 484).lineTo(486, 460).lineTo(486, 579);
+
+				fillObj.push(polygons[4].graphics.beginStroke("black").command);
+				polygons[4].graphics.moveTo(14, 453).lineTo(29, 453).lineTo(59, 455).lineTo(485, 432).lineTo(485, 314).lineTo(476, 314).lineTo(309, 322).lineTo(75, 335).lineTo(26, 368).lineTo(14, 368).lineTo(14, 453);
+
+				fillObj.push(polygons[5].graphics.beginStroke("black").command);
+				polygons[5].graphics.moveTo(802, 421).lineTo(785, 421).lineTo(522, 427).lineTo(521, 318).lineTo(530, 318).lineTo(790, 312).lineTo(802, 312).lineTo(802, 421);
+
+				fillObj.push(polygons[6].graphics.beginStroke("black").command);
+				polygons[6].graphics.moveTo(802, 280).lineTo(802, 173).lineTo(783, 173).lineTo(654, 171).lineTo(531, 180).lineTo(521, 180).lineTo(521, 291).lineTo(585, 291).lineTo(666, 286).lineTo(802, 280);
+
+				fillObj.push(polygons[7].graphics.beginStroke("black").command);
+				polygons[7].graphics.moveTo(528, 145).lineTo(528, 48).lineTo(589, 18).lineTo(603, 15).lineTo(803, 9).lineTo(803, 141).lineTo(611, 141).lineTo(528, 145);
+
+				fillObj.push(polygons[8].graphics.beginStroke("black").command);
+				polygons[8].graphics.moveTo(496, 101).lineTo(490, 286).lineTo(367, 289).lineTo(132, 301).lineTo(129, 301).lineTo(149, 280).lineTo(488, 101).lineTo(496, 101);
+
+				stage.update();
+			}
+
+		</script>
+	</head>
+
+	<body onload="init();">
+		<canvas id="gkCanvas" width="825" height="825">
+			 Project GariKhata: GariKhata Neighbourhood Plan 
+		</canvas>
+	</body>
+</html>
