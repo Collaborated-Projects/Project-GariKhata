@@ -220,7 +220,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     html_preparetemplate(html_filename, "GariKhata Neighbourhood Plan",
                          ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css"],
                          ["../Libraries used/js/easeljs-0.8.2.min.js", "../Libraries used/js/foo9.createjs.tooltip.js", "../Libraries used/js/jquery-3.2.1.js"],
-                         html_javascript, [("init()", html_function_init), ("waterlines()", html_function_shape)])
+                         html_javascript, [("init()", html_function_init), (html_filename[16:len(html_filename)-5] + "()", html_function_shape)])
 
 
-parse("GKWaterLines.svg", "../Output Files/waterlines.html")
+parse("../Data Files/GKWaterLines.svg", "../Output Files/waterlines.html")

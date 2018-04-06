@@ -33,8 +33,10 @@ def html_preparetemplate(html_filename, document_title, css_links_attributes_lis
                   '\n\t\t<canvas id="gkCanvas" width="825" height="825">' \
                   '\n\t\t\t Project GariKhata: ' + document_title + ' ' \
                   '\n\t\t</canvas>' \
+                  '\n\t\t<button onclick="'+ html_filename[16:len(html_filename)-5] + '();">' + html_filename[16:len(html_filename)-5] + '</button>' \
                   '\n\t</body>' \
                   '\n</html>'
+    ##Button tag needs to be updated if directories in the root are changed
     file.write(html_header)
 
 def html_jsfunction(js_function_name, js_function_string):
