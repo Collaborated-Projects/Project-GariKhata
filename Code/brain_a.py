@@ -2,7 +2,7 @@
 from xml.dom import minidom
 from xml_manager import *           #(custom  module)
 from global_manager import *        #(custom  module)
-from html_manager import *          #(custom  module)
+from html_manager_a import *          #(custom  module)
 
 
 def parse(xml_filename, html_filename):                     ##Takes a '.svg' file and generates an 'html' file from it
@@ -63,6 +63,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     html_javascript = html_javascript + '\n\t\t<script>\n' \
                                         '\t\t\tvar stage, showTip = false;\n' \
                                         '\t\t\tvar tip = null;\n' \
+                                        '\t\t\tvar count = 0;\n' \
                                         '\t\t\tfillObj = [];\n'
     for shape in shapes_list:
         html_javascript = html_javascript + '\t\t\t' + shape + 's = [];\n'
@@ -75,12 +76,13 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
 
     for shape in count_shapes:
         if(shape[0] in shapes_list):
+
             html_function_init = html_function_init + '\t\t\t\tfor(var ' + shape[0] + 'number=0; ' + shape[0] + 'number<' + str(shape[1]) + '; ' + shape[0] + 'number++)\n' \
                                                 '\t\t\t\t{\n' \
                                                 '\t\t\t\t\t' + shape[0] + 's.push(stage.addChild(new createjs.Shape()));\n' \
                                                 '\t\t\t\t}\n'
-
     html_function_shape = ""
+
     for shape in count_shapes:
         if(shape[1] != 0):
             if(shape[0] == "rect"):
@@ -213,14 +215,10 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
 
     html_function_shape = html_function_shape + '\t\t\t\tstage.update();\n'
 
-
-    #print(polygons_info[0])
-
-
     html_preparetemplate(html_filename, "GariKhata Neighbourhood Plan",
                          ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css"],
                          ["../Libraries used/js/easeljs-0.8.2.min.js", "../Libraries used/js/foo9.createjs.tooltip.js", "../Libraries used/js/jquery-3.2.1.js"],
                          html_javascript, [("init()", html_function_init), (html_filename[16:len(html_filename)-5] + "()", html_function_shape)])
 
 
-parse("../Data Files/GKWaterLines.svg", "../Output Files/waterlines.html")
+parse("../Data Files/GKPlotProfile.svg", "../Output Files/plotprofile.html")

@@ -11,6 +11,7 @@
 		<script>
 			var stage, showTip = false;
 			var tip = null;
+			var count = 0;
 			fillObj = [];
 			polygons = [];
 			polylines = [];
@@ -26,6 +27,184 @@
 				{
 					polygons.push(stage.addChild(new createjs.Shape()));
 				}
+			}
+
+			function tick(event)
+			{
+				if(tip != null)
+				{
+					tip.visible = false;
+				}
+
+				polylines[0].graphics.beginStroke("black").command;
+				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
+				if(polylines[0].hitTest(stage.mouseX, stage.mouseY))
+				{
+				polylines[0].graphics.beginStroke("black").command;
+				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
+					tip = new foo9.createjs.Tooltip("Polyline0", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polylines[1].graphics.beginStroke("black").command;
+				polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
+				if(polylines[1].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polylines[1].graphics.beginStroke("black").command;
+					polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
+					tip = new foo9.createjs.Tooltip("Polyline1", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polylines[2].graphics.beginStroke("black").command;
+				polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
+				if(polylines[2].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polylines[2].graphics.beginStroke("black").command;
+					polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
+					tip = new foo9.createjs.Tooltip("Polyline2", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polylines[3].graphics.beginStroke("black").command;
+				polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
+				if(polylines[3].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polylines[3].graphics.beginStroke("black").command;
+					polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
+					tip = new foo9.createjs.Tooltip("Polyline3", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polylines[4].graphics.beginStroke("black").command;
+				polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
+				if(polylines[4].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polylines[4].graphics.beginStroke("black").command;
+					polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
+					tip = new foo9.createjs.Tooltip("Polyline4", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[0].graphics.beginStroke("black").command;
+				polygons[0].graphics.moveTo(520, 573).lineTo(529, 573).lineTo(787, 561).lineTo(804, 561).lineTo(804, 452).lineTo(784, 452).lineTo(520, 456).lineTo(520, 573);
+				if(polygons[0].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[0].graphics.beginStroke("black").command;
+					polygons[0].graphics.moveTo(520, 573).lineTo(529, 573).lineTo(787, 561).lineTo(804, 561).lineTo(804, 452).lineTo(784, 452).lineTo(520, 456).lineTo(520, 573);
+					tip = new foo9.createjs.Tooltip("Polygon0", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[1].graphics.beginStroke("black").command;
+				polygons[1].graphics.moveTo(483, 780).lineTo(475, 780).lineTo(23, 763).lineTo(15, 763).lineTo(15, 754).lineTo(15, 621).lineTo(28, 621).lineTo(485, 604).lineTo(485, 612).lineTo(483, 780);
+				if(polygons[1].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[1].graphics.beginStroke("black").command;
+					polygons[1].graphics.moveTo(483, 780).lineTo(475, 780).lineTo(23, 763).lineTo(15, 763).lineTo(15, 754).lineTo(15, 621).lineTo(28, 621).lineTo(485, 604).lineTo(485, 612).lineTo(483, 780);
+					tip = new foo9.createjs.Tooltip("Polygon1", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[2].graphics.beginStroke("black").command;
+				polygons[2].graphics.moveTo(518, 599).lineTo(517, 784).lineTo(530, 784).lineTo(787, 805).lineTo(803, 805).lineTo(803, 580).lineTo(784, 580).lineTo(525, 599).lineTo(518, 599);
+				if(polygons[2].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[2].graphics.beginStroke("black").command;
+					polygons[2].graphics.moveTo(518, 599).lineTo(517, 784).lineTo(530, 784).lineTo(787, 805).lineTo(803, 805).lineTo(803, 580).lineTo(784, 580).lineTo(525, 599).lineTo(518, 599);
+					tip = new foo9.createjs.Tooltip("Polygon2", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[3].graphics.beginStroke("black").command;
+				polygons[3].graphics.moveTo(484, 579).lineTo(475, 579).lineTo(24, 596).lineTo(15, 596).lineTo(15, 484).lineTo(27, 484).lineTo(484, 460).lineTo(484, 579);
+				if(polygons[3].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[3].graphics.beginStroke("black").command;
+					polygons[3].graphics.moveTo(484, 579).lineTo(475, 579).lineTo(24, 596).lineTo(15, 596).lineTo(15, 484).lineTo(27, 484).lineTo(484, 460).lineTo(484, 579);
+					tip = new foo9.createjs.Tooltip("Polygon3", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[4].graphics.beginStroke("black").command;
+				polygons[4].graphics.moveTo(12, 453).lineTo(27, 453).lineTo(57, 455).lineTo(484, 432).lineTo(484, 314).lineTo(475, 314).lineTo(308, 322).lineTo(73, 335).lineTo(24, 368).lineTo(12, 368).lineTo(12, 453);
+				if(polygons[4].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[4].graphics.beginStroke("black").command;
+					polygons[4].graphics.moveTo(12, 453).lineTo(27, 453).lineTo(57, 455).lineTo(484, 432).lineTo(484, 314).lineTo(475, 314).lineTo(308, 322).lineTo(73, 335).lineTo(24, 368).lineTo(12, 368).lineTo(12, 453);
+					tip = new foo9.createjs.Tooltip("Polygon4", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[5].graphics.beginStroke("black").command;
+				polygons[5].graphics.moveTo(801, 421).lineTo(783, 421).lineTo(520, 427).lineTo(520, 318).lineTo(529, 318).lineTo(788, 312).lineTo(801, 312).lineTo(801, 421);
+				if(polygons[5].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[5].graphics.beginStroke("black").command;
+					polygons[5].graphics.moveTo(801, 421).lineTo(783, 421).lineTo(520, 427).lineTo(520, 318).lineTo(529, 318).lineTo(788, 312).lineTo(801, 312).lineTo(801, 421);
+					tip = new foo9.createjs.Tooltip("Polygon5", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[6].graphics.beginStroke("black").command;
+				polygons[6].graphics.moveTo(801, 280).lineTo(801, 173).lineTo(782, 173).lineTo(652, 171).lineTo(529, 180).lineTo(520, 180).lineTo(520, 291).lineTo(584, 291).lineTo(665, 286).lineTo(801, 280);
+				if(polygons[6].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[6].graphics.beginStroke("black").command;
+					polygons[6].graphics.moveTo(801, 280).lineTo(801, 173).lineTo(782, 173).lineTo(652, 171).lineTo(529, 180).lineTo(520, 180).lineTo(520, 291).lineTo(584, 291).lineTo(665, 286).lineTo(801, 280);
+					tip = new foo9.createjs.Tooltip("Polygon6", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[7].graphics.beginStroke("black").command;
+				polygons[7].graphics.moveTo(527, 145).lineTo(526, 48).lineTo(588, 18).lineTo(602, 15).lineTo(801, 9).lineTo(801, 141).lineTo(610, 141).lineTo(527, 145);
+				if(polygons[7].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[7].graphics.beginStroke("black").command;
+					polygons[7].graphics.moveTo(527, 145).lineTo(526, 48).lineTo(588, 18).lineTo(602, 15).lineTo(801, 9).lineTo(801, 141).lineTo(610, 141).lineTo(527, 145);
+					tip = new foo9.createjs.Tooltip("Polygon7", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				polygons[8].graphics.beginStroke("black").command;
+				polygons[8].graphics.moveTo(494, 101).lineTo(488, 286).lineTo(365, 289).lineTo(131, 301).lineTo(127, 301).lineTo(147, 280).lineTo(487, 101).lineTo(494, 101);
+				if(polygons[8].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[8].graphics.beginStroke("black").command;
+					polygons[8].graphics.moveTo(494, 101).lineTo(488, 286).lineTo(365, 289).lineTo(131, 301).lineTo(127, 301).lineTo(147, 280).lineTo(487, 101).lineTo(494, 101);
+					tip = new foo9.createjs.Tooltip("Polygon8", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.x = stage.mouseX - tip.width/2;
+				}
+
+				stage.update(event);
 			}
 
 			function waterlines()
@@ -72,16 +251,29 @@
 				fillObj.push(polygons[8].graphics.beginStroke("black").command);
 				polygons[8].graphics.moveTo(494, 101).lineTo(488, 286).lineTo(365, 289).lineTo(131, 301).lineTo(127, 301).lineTo(147, 280).lineTo(487, 101).lineTo(494, 101);
 
+				createjs.Ticker.on("tick", tick);
 				stage.update();
 			}
 
+			$(document).ready(function()
+				{
+					waterlines();
+				});
 		</script>
 	</head>
 
 	<body onload="init();">
+		<h1>Project GariKhata: GariKhata Neighbourhood Plan</h1>
+		<br>
+		<button id="btnBaseMap" onclick="location.href='basemap.html'">basemap</button>
+		<button id="btnGasLines" onclick="location.href='gaslines.html'">gaslines</button>
+		<button id="btnPlotProfile" onclick="location.href='plotprofile.html'">plotprofile</button>
+		<button id="btnSewageLines" onclick="location.href='sewagelines.html'">sewagelines</button>
+		<button id="btnWaterLines" onclick="location.href='waterlines.html'">waterlines</button>
+
+		<h2>Base Map View</h2>
 		<canvas id="gkCanvas" width="825" height="825">
 			 Project GariKhata: GariKhata Neighbourhood Plan 
 		</canvas>
-		<button onclick="waterlines();">waterlines</button>
 	</body>
 </html>

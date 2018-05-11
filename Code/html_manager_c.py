@@ -26,14 +26,19 @@ def html_preparetemplate(html_filename, document_title, css_links_attributes_lis
         html_header = html_header + html_jsfunction(js_function[0], js_function[1])
         html_header = html_header + '\n'
 
+    html_header = html_header + '\t\t\t$(document).ready(function()\n' \
+                                '\t\t\t\t{\n' \
+                                '\t\t\t\t\t' + html_filename[16:len(html_filename) - 5] + '();\n' \
+                                '\t\t\t\t});\n'
+
     html_header = html_header + '\t\t</script>\n'       #closes script tag
+
 
     html_header = html_header + '\t</head>' \
                   '\n\n\t<body onload="init();">' \
                   '\n\t\t<canvas id="gkCanvas" width="825" height="825">' \
                   '\n\t\t\t Project GariKhata: ' + document_title + ' ' \
                   '\n\t\t</canvas>' \
-                  '\n\t\t<button onclick="'+ html_filename[16:len(html_filename)-5] + '();">' + html_filename[16:len(html_filename)-5] + '</button>' \
                   '\n\t</body>' \
                   '\n</html>'
     ##Button tag needs to be updated if directories in the root are changed
