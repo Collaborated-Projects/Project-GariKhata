@@ -197,10 +197,16 @@ body
 {
 	position: absolute;
 	margin-bottom: 100px;
-	margin-top: -500px;
-	margin-left: 28px;
+	margin-top: -510px;
+	margin-left: 6px;
 	color: #ffcc00;
 	font-weight: bold;
+}
+
+#divGasLines h2
+{
+	padding-top: 10px;
+	padding-left: 22px;
 }
 /*divGasLines CSS ends.*/
 
@@ -209,10 +215,16 @@ body
 {
 	position: absolute;
 	margin-bottom: 100px;
-	margin-top: -500px;
-	margin-left: 28px;
+	margin-top: -510px;
+	margin-left: 6px;
 	color: #ffcc00;
 	font-weight: bold;
+}
+
+#divWaterLines h2
+{
+	padding-top: 10px;
+	padding-left: 22px;
 }
 /*divWaterLines CSS ends.*/
 
@@ -221,12 +233,29 @@ body
 {
 	position: absolute;
 	margin-bottom: 100px;
-	margin-top: -500px;
-	margin-left: 28px;
+	margin-top: -510px;
+	margin-left: 6px;
 	color: #ffcc00;
 	font-weight: bold;
 }
+
+#divSewageLines h2
+{
+	padding-top: 10px;
+	padding-left: 22px;
+}
 /*divSewageLines CSS ends.*/
+
+/*divContactUs CSS starts...*/
+#divContactUs
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -460px;
+	margin-left: 28px;
+	color: #ffffff;
+}
+/*divContactUs CSS ends.*/
 
 /*divMapImage CSS starts...*/
 #divMapImage
