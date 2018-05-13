@@ -2,10 +2,13 @@
 {
 	margin: 0px;
 	padding: 0px;
+	font-family: Tahoma;
 }
 
 body
 {
+	background-image: repeating-linear-gradient(black, white);
+	display: block;
 	background-color: #333333;
 }
 /*divContainer CSS starts...*/
@@ -113,14 +116,70 @@ body
 #divNews
 {
 	position: static;
-	width: 480px;
-	height: 400px;
-	background-color: #737373;
+	width: 235px;
+	height: 250px;
+	background-color: #000000; /*#737373*/
 	margin-left: 840px;
 	margin-top: 80px;
-	margin-bottom: 80px;
+	margin-bottom: 100px;
 }
-/*divNews ends.*/
+/*divNews CSS ends.*/
+
+/*divNewsContent CSS starts...*/
+#divNewsContent
+{
+	width: 250px;
+	position: absolute;
+	padding-left: 10px;
+	padding-top: 5px;
+	float: left;
+}
+
+#divNewsContent h4
+{
+	position: absolute;
+	font-weight: bold;
+	color: #ffcc00;
+}
+
+#divNewsContent ul
+{
+	position: absolute;
+	color: white;
+	margin: 20px;
+	padding-top: 20px;
+}
+/*divNewsContent CSS ends.*/
+
+/*divLinks CSS starts...*/
+#divLinks
+{
+	width: 115px;
+	height: 235px;
+	/*background-color: #000000;*/ /*#737373*/
+	margin-left: 1205px;
+	margin-top: -330px;
+	margin-bottom: 200px;
+}
+
+#divLinks i a
+{
+	color: #ffcc00;
+}
+/*divLinks CSS ends.*/
+
+/*divMapImage CSS starts...*/
+#divMapImage
+{
+	position: static;
+	width: 480px;
+	height: 290px;
+	background-color: #000000; /*#737373*/
+	margin-left: 840px;
+	margin-top: 80px;
+	margin-bottom: 100px;
+}
+/*divMapImage ends.*/
 
 /*divFooter CSS starts...*/
 footer
@@ -129,8 +188,10 @@ footer
 	padding: 5px;
 	margin-left: 28px;
 	margin-right: 28px;
-	margin-bottom: 10px;
-	height: 50px;
+	margin-bottom: 5px;
+	height: 40px;
 	color: white;
+	font-size: 10px;
+	text-align: center;
 }
 /*divFooter CSS ends.
