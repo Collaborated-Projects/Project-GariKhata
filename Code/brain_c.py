@@ -118,7 +118,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Rectangle' + str(rect_no) + '", 100, 40);\n' \
                                             '\t\t\t\t\tstage.addChild(tip);\n' \
                                             '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                            '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                            '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -157,7 +157,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Circle' + str(circle_no) + '", 100, 40);\n' \
                                                                     '\t\t\t\t\tstage.addChild(tip);\n' \
                                                                     '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                                                    '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                                                    '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -218,7 +218,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Line' + str(line_no) + '", 100, 40);\n' \
                                          '\t\t\t\t\tstage.addChild(tip);\n' \
                                          '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                         '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                         '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -263,7 +263,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polyline' + str(polyline_no) + '", 100, 40);\n' \
                                        '\t\t\t\t\tstage.addChild(tip);\n' \
                                        '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                       '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                       '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -296,7 +296,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polyline' + str(polyline_no) + '", 100, 40);\n' \
                                        '\t\t\t\t\tstage.addChild(tip);\n' \
                                        '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                       '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                       '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -334,7 +334,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polygon' + str(polygon_no) + '", 100, 40);\n' \
                                            '\t\t\t\t\tstage.addChild(tip);\n' \
                                            '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                           '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                           '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -362,7 +362,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polygon' + str(polygon_no) + '", 100, 40);\n' \
                                           '\t\t\t\t\tstage.addChild(tip);\n' \
                                           '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                          '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n'
+                                          '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
 
                         html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
@@ -382,9 +382,9 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     html_function_tick = html_function_tick + '\t\t\t\tstage.update(event);\n'
 
     html_preparetemplate(html_filename, "GariKhata Neighbourhood Plan",
-                         ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css"],
+                         ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css", "../Libraries used/css/stylesheet.css", "stylesheet", "text/css"],
                          ["../Libraries used/js/easeljs-0.8.2.min.js", "../Libraries used/js/foo9.createjs.tooltip.js", "../Libraries used/js/jquery-3.2.1.js"],
                          html_javascript, [("init()", html_function_init), ("tick(event)", html_function_tick), (html_filename[16:len(html_filename)-5] + "()", html_function_shape)])
 
 
-parse("../Data Files/GKBaseMap.svg", "../Output Files/basemap.html")
+parse("../Data Files/GKSewageLines.svg", "../Output Files/sewagelines.html")

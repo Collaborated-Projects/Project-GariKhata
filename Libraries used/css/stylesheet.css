@@ -168,6 +168,66 @@ body
 }
 /*divLinks CSS ends.*/
 
+/*divBaseMap CSS starts...*/
+#divBaseMap 
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -500px;
+	margin-left: 28px;
+	color: #ffcc00;
+	font-weight: bold;
+}
+/*divBaseMap CSS ends.*/
+
+/*divPlotProfile CSS starts...*/
+#divPlotProfile
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -500px;
+	margin-left: 28px;
+	color: #ffcc00;
+	font-weight: bold;
+}
+/*divPlotProfile CSS ends.*/
+
+/*divGasLines CSS starts...*/
+#divGasLines
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -500px;
+	margin-left: 28px;
+	color: #ffcc00;
+	font-weight: bold;
+}
+/*divGasLines CSS ends.*/
+
+/*divWaterLines CSS starts...*/
+#divWaterLines
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -500px;
+	margin-left: 28px;
+	color: #ffcc00;
+	font-weight: bold;
+}
+/*divWaterLines CSS ends.*/
+
+/*divSewageLines CSS starts...*/
+#divSewageLines
+{
+	position: absolute;
+	margin-bottom: 100px;
+	margin-top: -500px;
+	margin-left: 28px;
+	color: #ffcc00;
+	font-weight: bold;
+}
+/*divSewageLines CSS ends.*/
+
 /*divMapImage CSS starts...*/
 #divMapImage
 {
@@ -189,6 +249,7 @@ footer
 	margin-left: 28px;
 	margin-right: 28px;
 	margin-bottom: 5px;
+	margin-top: 700px;
 	height: 40px;
 	color: white;
 	font-size: 10px;

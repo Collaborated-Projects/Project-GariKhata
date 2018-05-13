@@ -4,6 +4,7 @@
 		<title>GariKhata Neighbourhood Plan</title>
 		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
 		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/stylesheet.css" rel="stylesheet" type= text/css>
 		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
 		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
 		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
@@ -50,7 +51,7 @@
 					tip = new foo9.createjs.Tooltip("Line0", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polylines[0].graphics.beginStroke("black").command;
@@ -62,7 +63,7 @@
 					tip = new foo9.createjs.Tooltip("Polyline0", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polylines[1].graphics.beginStroke("black").command;
@@ -74,7 +75,7 @@
 					tip = new foo9.createjs.Tooltip("Polyline1", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polylines[2].graphics.beginStroke("black").command;
@@ -86,7 +87,7 @@
 					tip = new foo9.createjs.Tooltip("Polyline2", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polylines[3].graphics.beginStroke("black").command;
@@ -98,7 +99,7 @@
 					tip = new foo9.createjs.Tooltip("Polyline3", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polylines[4].graphics.beginStroke("black").command;
@@ -110,7 +111,7 @@
 					tip = new foo9.createjs.Tooltip("Polyline4", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[0].graphics.beginStroke("black").command;
@@ -122,7 +123,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon0", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[1].graphics.beginStroke("black").command;
@@ -134,7 +135,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon1", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[2].graphics.beginStroke("black").command;
@@ -146,7 +147,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon2", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[3].graphics.beginStroke("black").command;
@@ -158,7 +159,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon3", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[4].graphics.beginStroke("black").command;
@@ -170,7 +171,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon4", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[5].graphics.beginStroke("black").command;
@@ -182,7 +183,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon5", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[6].graphics.beginStroke("black").command;
@@ -194,7 +195,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon6", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[7].graphics.beginStroke("black").command;
@@ -206,7 +207,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon7", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				polygons[8].graphics.beginStroke("black").command;
@@ -218,7 +219,7 @@
 					tip = new foo9.createjs.Tooltip("Polygon8", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
-					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
 				}
 
 				stage.update(event);
@@ -283,17 +284,64 @@
 	</head>
 
 	<body onload="init();">
-		<h1>Project GariKhata: GariKhata Neighbourhood Plan</h1>
-		<br>
-		<button id="btnBaseMap" onclick="location.href='basemap.html'">basemap</button>
-		<button id="btnGasLines" onclick="location.href='gaslines.html'">gaslines</button>
-		<button id="btnPlotProfile" onclick="location.href='plotprofile.html'">plotprofile</button>
-		<button id="btnSewageLines" onclick="location.href='sewagelines.html'">sewagelines</button>
-		<button id="btnWaterLines" onclick="location.href='waterlines.html'">waterlines</button>
+		<div id="divContainer">
+			<div id="divHeader">
+				<div id="divLogo">
+					<img src="../Media/images/logo.png" align="left">
+				</div>
+				<h1>Project GariKhata</h1>
+				<h5>An open-source research project for neighbourhood planning</h5>
+			</div>
+			
+			<div id="divNavigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li>
+						<a href="#">Maps</a>
+						<ul>
+							<li><a href="basemap.html">Base Map</a></li>
+							<li><a href="plotprofile.html">Plot Profile</a></li>
+							<li><a href="gaslines.html">Gas Lines</a></li>
+							<li><a href="waterlines.html">Water Lines</a></li>
+							<li><a href="sewagelines.html">Sewage Lines</a></li>
+						</ul>
+					</li>
+					<li><a href="contact_us.html">Contact Us</a></li>
+				</ul>
+			</div>
 
-		<h2>Base Map View</h2>
-		<canvas id="gkCanvas" width="825" height="825">
-			 Project GariKhata: GariKhata Neighbourhood Plan 
-		</canvas>
+			<div id="divContent">
+				
+				
+				<div id="divNews">
+					<div id="divNewsContent">
+						<h4>News &amp Updates:</h4>
+						<ul>
+							<li>The website is currently under maintenance.</li>
+							<br>
+							<li>Project GariKhata is an open-source project.</li>
+						</ul>
+					</div>
+				</div>
+				<div id="divLinks">
+					<i><a href="https://www.google.com/maps/place/Gari+Khata,+Karachi,+Karachi+City,+Sindh/data=!4m2!3m1!1s0x3eb33e0dfc00c675:0xa833274e8b1b0b7d?sa=X&ved=0ahUKEwj29aHwtILbAhUGxxQKHex9ATgQ8gEIIzAA">View GariKhata in Google Maps.</a></i>
+				</div>
+
+				<div id="divGasLines">
+					<h2>Gas Lines View:</h2>
+					<canvas id="gkCanvas" width="825" height="825">
+						 Project GariKhata: GariKhata Neighbourhood Plan 
+					</canvas>	
+				</div>
+			</div>
+
+			<footer>
+				<i>Copyright &copy Emad Bin Abid and Saman Gaziani.</i>
+				<br>
+				<i><u>An open-source research project for neighbourhood planning.</u></i>
+				<img src="../Media/images/logo.png" style="float: left; margin-top: -13px; margin-left: 10px;" width="50px;">
+			</footer>
+		</div>
 	</body>
 </html>
