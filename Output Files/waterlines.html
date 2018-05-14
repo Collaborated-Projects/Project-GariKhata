@@ -105,20 +105,16 @@
 					tip.visible = false;
 				}
 
-				polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
 				if(polylines[0].hitTest(stage.mouseX, stage.mouseY))
 				{
-				polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
+					polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command;
+					polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
 					tip = new foo9.createjs.Tooltip("Polyline0", 100, 40);
 					stage.addChild(tip);
 					tip.x = stage.mouseX - tip.width/2;
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[1].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
 				if(polylines[1].hitTest(stage.mouseX, stage.mouseY))
 				{
 					polylines[1].graphics.beginStroke("#000099").setStrokeStyle(8).command;
@@ -129,8 +125,6 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[2].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
 				if(polylines[2].hitTest(stage.mouseX, stage.mouseY))
 				{
 					polylines[2].graphics.beginStroke("#000099").setStrokeStyle(8).command;
@@ -141,8 +135,6 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[3].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
 				if(polylines[3].hitTest(stage.mouseX, stage.mouseY))
 				{
 					polylines[3].graphics.beginStroke("#000099").setStrokeStyle(8).command;
@@ -153,8 +145,6 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[4].graphics.beginStroke("#000099").setStrokeStyle(8).command;
-				polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
 				if(polylines[4].hitTest(stage.mouseX, stage.mouseY))
 				{
 					polylines[4].graphics.beginStroke("#000099").setStrokeStyle(8).command;
@@ -278,19 +268,19 @@
 
 			function waterlines()
 			{
-				fillObj.push(polylines[0].graphics.beginStroke("black").command);
+				fillObj.push(polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command);
 				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
 
-				fillObj.push(polylines[1].graphics.beginStroke("black").command);
+				fillObj.push(polylines[1].graphics.beginStroke("#000099").setStrokeStyle(8).command);
 				polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
 
-				fillObj.push(polylines[2].graphics.beginStroke("black").command);
+				fillObj.push(polylines[2].graphics.beginStroke("#000099").setStrokeStyle(8).command);
 				polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
 
-				fillObj.push(polylines[3].graphics.beginStroke("black").command);
+				fillObj.push(polylines[3].graphics.beginStroke("#000099").setStrokeStyle(8).command);
 				polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
 
-				fillObj.push(polylines[4].graphics.beginStroke("black").command);
+				fillObj.push(polylines[4].graphics.beginStroke("#000099").setStrokeStyle(8).command);
 				polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
 
 				fillObj.push(polygons[0].graphics.beginStroke("black").command);
