@@ -8,6 +8,10 @@
 		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
 		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
 		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+		<script src="../Libraries used/js/tweenjs.min.js"></script>
+		<script src="../Libraries used/js/tweenjs.js"></script>
+		<script src="../Libraries used/js/tweenjs-NEXT.js"></script>
+		<script src="../Libraries used/js/tweenjs-NEXT.min.js"></script>
 	
 		<script>
 			var stage, showTip = false;
@@ -16,6 +20,8 @@
 			fillObj = [];
 			polygons = [];
 			polylines = [];
+
+			var polyline, cmd = false;
 
 			function init()
 			{
@@ -28,6 +34,68 @@
 				{
 					polygons.push(stage.addChild(new createjs.Shape()));
 				}
+
+				polyline = stage.addChild(new createjs.Shape());
+				
+				/*Polyline[0]*/
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(814, 805);
+				cmd = polyline.graphics.lineTo(814, 805).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:814, y:573}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(814, 573);
+				cmd = polyline.graphics.lineTo(814, 573).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:814, y:0}, 10000);
+
+				/*Polyline[1]*/
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(814, 573);
+				cmd = polyline.graphics.lineTo(814, 573).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:804, y:574}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(804, 574);
+				cmd = polyline.graphics.lineTo(804, 574).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:539, y:593}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(539, 593);
+				cmd = polyline.graphics.lineTo(539, 593).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:15, y:617}, 10000);
+
+				/*Polyline[2]*/
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(814, 446);
+				cmd = polyline.graphics.lineTo(814, 446).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:520, y:452}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(520, 452);
+				cmd = polyline.graphics.lineTo(520, 452).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:485, y:452}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(485, 452);
+				cmd = polyline.graphics.lineTo(485, 452).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:0, y:477}, 10000);
+
+				/*Polyline[3]*/
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(520, 155);
+				cmd = polyline.graphics.lineTo(520, 155).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:652, y:147}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(652, 147);
+				cmd = polyline.graphics.lineTo(652, 147).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:814, y:151}, 10000);
+
+				/*Polyline[4]*/
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(73, 327);
+				cmd = polyline.graphics.lineTo(73, 327).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:488, y:305}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(488, 305);
+				cmd = polyline.graphics.lineTo(488, 305).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:520, y:310}, 10000);
+
+				polyline.graphics.beginStroke("#0066ff").setStrokeStyle(3).moveTo(520, 310);
+				cmd = polyline.graphics.lineTo(520, 310).command;
+				createjs.Tween.get(cmd, {loop:true}).to({x:814, y:305}, 10000);
+
+				createjs.Ticker.on("tick", stage);
+				stage.update();
 			}
 
 			function tick(event)
@@ -37,11 +105,11 @@
 					tip.visible = false;
 				}
 
-				polylines[0].graphics.beginStroke("#0000ff").command;
+				polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
 				if(polylines[0].hitTest(stage.mouseX, stage.mouseY))
 				{
-				polylines[0].graphics.beginStroke("#0000ff").command;
+				polylines[0].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[0].graphics.moveTo(814, 805).lineTo(814, 573).lineTo(814, 0);
 					tip = new foo9.createjs.Tooltip("Polyline0", 100, 40);
 					stage.addChild(tip);
@@ -49,11 +117,11 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[1].graphics.beginStroke("#0000ff").command;
+				polylines[1].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
 				if(polylines[1].hitTest(stage.mouseX, stage.mouseY))
 				{
-					polylines[1].graphics.beginStroke("#0000ff").command;
+					polylines[1].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 					polylines[1].graphics.moveTo(814, 573).lineTo(804, 574).lineTo(539, 593).lineTo(30, 617).lineTo(15, 617);
 					tip = new foo9.createjs.Tooltip("Polyline1", 100, 40);
 					stage.addChild(tip);
@@ -61,11 +129,11 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[2].graphics.beginStroke("#0000ff").command;
+				polylines[2].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
 				if(polylines[2].hitTest(stage.mouseX, stage.mouseY))
 				{
-					polylines[2].graphics.beginStroke("#0000ff").command;
+					polylines[2].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 					polylines[2].graphics.moveTo(814, 446).lineTo(520, 452).lineTo(485, 452).lineTo(12, 477).lineTo(0, 477);
 					tip = new foo9.createjs.Tooltip("Polyline2", 100, 40);
 					stage.addChild(tip);
@@ -73,11 +141,11 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[3].graphics.beginStroke("#0000ff").command;
+				polylines[3].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
 				if(polylines[3].hitTest(stage.mouseX, stage.mouseY))
 				{
-					polylines[3].graphics.beginStroke("#0000ff").command;
+					polylines[3].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 					polylines[3].graphics.moveTo(520, 155).lineTo(652, 147).lineTo(814, 151);
 					tip = new foo9.createjs.Tooltip("Polyline3", 100, 40);
 					stage.addChild(tip);
@@ -85,11 +153,11 @@
 					tip.y = stage.mouseY - tip.height;
 				}
 
-				polylines[4].graphics.beginStroke("#0000ff").command;
+				polylines[4].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 				polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
 				if(polylines[4].hitTest(stage.mouseX, stage.mouseY))
 				{
-					polylines[4].graphics.beginStroke("#0000ff").command;
+					polylines[4].graphics.beginStroke("#000099").setStrokeStyle(8).command;
 					polylines[4].graphics.moveTo(73, 327).lineTo(488, 305).lineTo(520, 310).lineTo(814, 305);
 					tip = new foo9.createjs.Tooltip("Polyline4", 100, 40);
 					stage.addChild(tip);
@@ -253,6 +321,7 @@
 				polygons[8].graphics.moveTo(494, 101).lineTo(488, 286).lineTo(365, 289).lineTo(131, 301).lineTo(127, 301).lineTo(147, 280).lineTo(487, 101).lineTo(494, 101);
 
 				createjs.Ticker.on("tick", tick);
+
 				stage.update();
 			}
 
