@@ -1,10 +1,19 @@
 //Polygon
-function Polygon(array_of_vectors)
+function Polygon(array_of_vectors, stroke_or_fill)
 {
 	this.array_of_vectors = array_of_vectors;
+	
 	this.col = 135;
 
-	fill(this.col);
+	if(stroke_or_fill === "fill")
+	{
+		fill(this.col);
+	}
+	else if(stroke_or_fill === "stroke")
+	{
+		stroke(this.col)
+	}
+	
 	beginShape();
 	var i = 0;
 	for(i=0; i<this.array_of_vectors.length; i++)
@@ -17,7 +26,16 @@ function Polygon(array_of_vectors)
 	{
 		//clear();
 		this.col = c;
-		fill(this.col);
+		
+		if(stroke_or_fill === "fill")
+		{
+			fill(this.col);
+		}
+		else if(stroke_or_fill === "stroke")
+		{
+			stroke(this.col)
+		}
+		
 		beginShape();
 		var i = 0;
 		for(i=0; i<this.array_of_vectors.length; i++)

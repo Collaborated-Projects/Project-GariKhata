@@ -59,35 +59,22 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     count_shapes = [("rect", len(rects_info)), ("circle", len(circles_info)), ("ellipse", len(ellipses_info)), ("line", len(lines_info)),
                     ("polyline", len(polylines_info)), ("polygon", len(polygons_info))]
 
-    html_javascript = '\t'
-    html_javascript = html_javascript + '\n\t\t<script>\n' \
-                                        '\t\t\tvar stage, showTip = false;\n' \
-                                        '\t\t\tvar tip = null;\n' \
-                                        '\t\t\tvar count = 0;\n' \
-                                        '\t\t\tfillObj = [];\n'
+    js_filler = ""
+
     for shape in shapes_list:
-        html_javascript = html_javascript + '\t\t\t' + shape + 's = [];\n'
-    html_javascript = html_javascript + '\n'
+        js_filler += '//' + shape + '\n'
+        js_filler += 'var array_' + shape + '_' + html_filename[0:len(html_filename)-3] + ' = [];\n' \
+                        'var pointer_' + shape + '_' + html_filename[0:len(html_filename)-3] + ' = null;\n\n'
+    js_filler += '\n\n'
+
+    js_filler += '//Tooltip\n' \
+                 'var tip = null;\n\n'
+
+    js_filler += 'function ' + html_filename[0:len(html_filename)-3] + 'Data()\n' \
+                    '{\n'
 
                                                                             ##canvas name hard-coded. FIX IT!
-    html_function_init = ""
-    html_function_init = html_function_init + '\t\t\t\tstage = new createjs.Stage("gkCanvas");\n'
-
-
-    for shape in count_shapes:
-        if(shape[0] in shapes_list):
-
-            html_function_init = html_function_init + '\t\t\t\tfor(var ' + shape[0] + 'number=0; ' + shape[0] + 'number<' + str(shape[1]) + '; ' + shape[0] + 'number++)\n' \
-                                                '\t\t\t\t{\n' \
-                                                '\t\t\t\t\t' + shape[0] + 's.push(stage.addChild(new createjs.Shape()));\n' \
-                                                '\t\t\t\t}\n'
-    html_function_shape = ""
-
-    html_function_tick = ""
-    html_function_tick = html_function_tick + '\t\t\t\tif(tip != null)\n' \
-                                              '\t\t\t\t{\n' \
-                                              '\t\t\t\t\ttip.visible = false;\n' \
-                                              '\t\t\t\t}\n\n'
+    js_function = ''
 
     for shape in count_shapes:
         if(shape[1] != 0):
@@ -228,77 +215,44 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         pass
 
             if (shape[0] == "polyline"):
+                shapeCounter = 0
+                js_filler += '\t//' + shape[0] + '\n'
+
                 for polyline_no in range(len(polylines_info)):
                     if (polylines_info[polyline_no][0] == 'cls-1'):
                         pass
 
                     if (polylines_info[polyline_no][0] == 'cls-2'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
-                                                            '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_shape = html_function_shape + '.lineTo' + str(
-                                polylines_info[polyline_no][1][coordinate])
-                        html_function_shape = html_function_shape + ';\n\n'
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
 
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command;\n' \
-                                            '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
+                        for coordinate in range(0, len(polylines_info[polyline_no][1])):
+                            js_filler += 'createVector' + str(polylines_info[polyline_no][1][coordinate])
 
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(
-                                polylines_info[polyline_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
+                            if(coordinate != len(polylines_info[polyline_no][1])-1):
+                                js_filler += ', '
+
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ' = new PolyLine('+\
+                                     shape[0] + str(shapeCounter) + ');\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ' = pointer_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ';\n\n'
 
 
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(polyline_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                       '\t\t\t\t{\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command;\n' \
-                                           '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
-
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(
-                                polylines_info[polyline_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polyline' + str(polyline_no) + '", 100, 40);\n' \
-                                       '\t\t\t\t\tstage.addChild(tip);\n' \
-                                       '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                       '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
                     if (polylines_info[polyline_no][0] == 'cls-3'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command);\n' \
-                                           '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_shape = html_function_shape + '.lineTo' + str(
-                                polylines_info[polyline_no][1][coordinate])
-                        html_function_shape = html_function_shape + ';\n\n'
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
 
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command;\n' \
-                                           '\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
+                        for coordinate in range(0, len(polylines_info[polyline_no][1])):
+                            js_filler += 'createVector' + str(polylines_info[polyline_no][1][coordinate])
 
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polylines_info[polyline_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
+                            if (coordinate != len(polylines_info[polyline_no][1]) - 1):
+                                js_filler += ', '
 
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new PolyLine(' + \
+                                     shape[0] + str(shapeCounter) + ');\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                                         0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(polyline_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                       '\t\t\t\t{\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.beginStroke("black").command;\n' \
-                                           '\t\t\t\t\t' + shape[0] + 's[' + str(polyline_no) + '].graphics.moveTo' + str(polylines_info[polyline_no][1][0])
-
-                        for coordinate in range(1, len(polylines_info[polyline_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polylines_info[polyline_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polyline' + str(polyline_no) + '", 100, 40);\n' \
-                                       '\t\t\t\t\tstage.addChild(tip);\n' \
-                                       '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                       '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
 
                     if (polylines_info[polyline_no][0] == 'cls-4'):
                         pass
@@ -307,65 +261,71 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                     if (polylines_info[polyline_no][0] == 'cls-6'):
                         pass
 
-            if (shape[0] == "polygon"):
+                    shapeCounter += 1
+
+                ##function test()
+
+                js_function += 'function ' + html_filename[0:len(html_filename) - 3] + '()\n'
+                js_function += '{\n'
+                js_function += '\tclear();\n' \
+                                '\tvar i = 0;\n\n'
+
+                js_function += '\t//' + shape[0] + '\n'
+
+                js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
+                                '\t{\n'
+                js_function += '\t\tvar j=0;\n'
+                js_function += '\t\tfor(j=0; j<array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].array_of_vectors.length; j++)\n'
+                js_function += '\t\t{\n\t\t\tif(collidePointLine(mouseX, mouseY, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] +\
+                               '[i].array_of_vectors[j].x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3]  + \
+                               '[i].array_of_vectors[j].y, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] +\
+                               '[i].array_of_vectors[j+1].x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3]  + \
+                               '[i].array_of_vectors[j+1].y, 1) == true)\n'
+                js_function += '\t\t\t{\n\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(150);\n' ##COLOR CAN CHANGE
+
+                js_function += '\t\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
+                js_function += '\t\t\t\ttip.show();\n'
+
+                js_function += '\t\t\t}\n\t\t\telse\n\t\t\t{\n' \
+                               '\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(0);\n\t\t\t}\n'  ##COLOR CAN CHANGE
+                js_function += '\t\t}\n\t}\n\n'
+
+        if (shape[0] == "polygon"):
+                shapeCounter = 0
+                js_filler += '\t//' + shape[0] + '\n'
+
+
                 for polygon_no in range(len(polygons_info)):
-                    if(polygons_info[polygon_no][0] == 'cls-1'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) +'].graphics.beginStroke("black").command);\n' \
-                                                            '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) +'].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_shape = html_function_shape + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_shape = html_function_shape + ';\n\n'
+                    if(polygons_info[polygon_no][0] == 'cls-1'):                ##beginStroke
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
+
+                        for coordinate in range(0, len(polygons_info[polygon_no][1])):
+                            js_filler += 'createVector' + str(polygons_info[polygon_no][1][coordinate])
+
+                            if (coordinate != len(polygons_info[polygon_no][1]) - 1):
+                                js_filler += ', '
+
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new Polygon(' + \
+                                     shape[0] + str(shapeCounter) + ', "stroke");\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                                         0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
 
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) +'].graphics.beginStroke("black").command;\n' \
-                                                '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
+                    if (polygons_info[polygon_no][0] == 'cls-2'):               ##beginFill
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
 
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(polygon_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                       '\t\t\t\t{\n'
-                        html_function_tick = html_function_tick + '\t\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginStroke("black").command;\n' \
-                                          '\t\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
+                        for coordinate in range(0, len(polygons_info[polygon_no][1])):
+                            js_filler += 'createVector' + str(polygons_info[polygon_no][1][coordinate])
 
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polygon' + str(polygon_no) + '", 100, 40);\n' \
-                                           '\t\t\t\t\tstage.addChild(tip);\n' \
-                                           '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                           '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
+                            if (coordinate != len(polygons_info[polygon_no][1]) - 1):
+                                js_filler += ', '
 
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
-
-                    if (polygons_info[polygon_no][0] == 'cls-2'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("red").command);\n' \
-                                                            '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_shape = html_function_shape + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_shape = html_function_shape + ';\n\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("red").command;\n' \
-                                          '\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(polygon_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                          '\t\t\t\t{\n'
-                        html_function_tick = html_function_tick + '\t\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.beginFill("green").command;\n' \
-                                          '\t\t\t\t\t' + shape[0] + 's[' + str(polygon_no) + '].graphics.moveTo' + str(polygons_info[polygon_no][1][0])
-                        for coordinate in range(1, len(polygons_info[polygon_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(polygons_info[polygon_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Polygon' + str(polygon_no) + '", 100, 40);\n' \
-                                          '\t\t\t\t\tstage.addChild(tip);\n' \
-                                          '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                          '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
-
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new Polygon(' + \
+                                     shape[0] + str(shapeCounter) + ', "fill");\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                                         0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
 
                     if (polygons_info[polygon_no][0] == 'cls-3'):
@@ -377,14 +337,34 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                     if (polygons_info[polygon_no][0] == 'cls-6'):
                         pass
 
-    html_function_shape = html_function_shape + '\t\t\t\tcreatejs.Ticker.on("tick", tick);\n'
-    html_function_shape = html_function_shape + '\t\t\t\tstage.update();\n'
-    html_function_tick = html_function_tick + '\t\t\t\tstage.update(event);\n'
+                    shapeCounter += 1
 
-    html_preparetemplate(html_filename, "GariKhata Neighbourhood Plan",
-                         ["../_shared/demo.css", "stylesheet", "text/css", "../Libraries used/css/bootstrap.min.css", "stylesheet", "text/css", "../Libraries used/css/stylesheet.css", "stylesheet", "text/css"],
-                         ["../Libraries used/js/easeljs-0.8.2.min.js", "../Libraries used/js/foo9.createjs.tooltip.js", "../Libraries used/js/jquery-3.2.1.js"],
-                         html_javascript, [("init()", html_function_init), ("tick(event)", html_function_tick), (html_filename[16:len(html_filename)-5] + "()", html_function_shape)])
+                #function test()
+                js_function += '\t//' + shape[0] + '\n'
+
+                js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
+                                '\t{\n\t\tif(collidePointPoly(mouseX, mouseY, array_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + \
+                               '[i].array_of_vectors) == true)\n'
+                js_function += '\t\t{\n\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(55);\n'    ##COLOR CAN CHANGE
+                js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
+                js_function += '\t\t\ttip.show();\n'
+                js_function += '\t\t}\n' \
+                               '\t\telse\n\t\t{\n' \
+                               '\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(135);\n'
+                js_function += '\t\t}\n\t}\n'
+
+                js_function += '}\n\n'
 
 
-parse("../Data Files/GKSewageLines.svg", "../Output Files/sewagelines.html")
+
+    js_filler += '}\n\n'
+
+
+
+
+
+    file = open(html_filename, "w")
+    file.write(js_filler)
+    file.write(js_function)
+
+parse("../Data Files/GKWaterLines.svg", "test.js")

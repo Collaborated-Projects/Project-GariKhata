@@ -11,5 +11,17 @@ from brain import *
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def js_preparetemplate(js_filename):
-    pass
+def js_preparetemplate(js_filename, mode_of_file):
+    file = open(js_filename, "w")
+
+    js_filler = ""
+
+    js_filler += "//PolyLine\n"
+    js_filler += 'var array_polylines_' + mode_of_file + '= []\n' \
+                    'var pointer_polygons_' + mode_of_file + '= null\n\n'
+
+    js_filler += "//Polygons\n"
+    js_filler += 'var array_polygons_' + mode_of_file + '= []\n' \
+                    'var pointer_polygons_' + mode_of_file + '= null\n\n'
+
+

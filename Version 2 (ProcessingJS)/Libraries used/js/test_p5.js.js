@@ -1,3 +1,4 @@
+//Polygons
 var array_polygons_waterlines = [];
 var pointer_polygons_waterlines = null;
 
@@ -32,7 +33,7 @@ function waterlinesData()
 	pointer_lines_waterlines = new PolyLine(line4);
 	array_lines_waterlines[4] = pointer_lines_waterlines;
 
-	//array_polygons_waterlines
+	//Polygons
 	var polygon0 = [createVector(520, 573), createVector(529, 573), createVector(787, 561), createVector(804, 561), createVector(804, 452), createVector(784, 452), 
 	createVector(520, 456), createVector(520, 573)];
 	var polygon1 = [createVector(483, 780), createVector(475, 780), createVector(23, 763), createVector(15, 763), createVector(15, 754), createVector(15, 621), 
@@ -89,9 +90,9 @@ function waterlines()
 	for(i=0; i<5; i++)
 	{
 		var j=0;
-		for(j=0; j<array_lines_waterlines[i].array_of_vectors.length; j++)
+		for(j=0; j<array_lines_waterlines[i].array_of_vectors.length - 1; j++)
 		{
-			if(collidePointLine(mouseX,mouseY,200, 300, array_lines_waterlines[i].array_of_vectors[j].x, array_lines_waterlines[i].array_of_vectors[j].y, 1) == true)
+			if(collidePointLine(mouseX,mouseY, array_lines_waterlines[i].array_of_vectors[j].x, array_lines_waterlines[i].array_of_vectors[j].y, array_lines_waterlines[i].array_of_vectors[j+1].x, array_lines_waterlines[i].array_of_vectors[j+1].y, 1) == true)
 			{
 				console.log("Line Collision.");
 				array_lines_waterlines[i].color(150);
@@ -103,7 +104,7 @@ function waterlines()
 		}	
 	}
 
-	//array_polygons_waterlines
+	//Polygons
 	i=0;
 	for(i=0; i<9; i++)
 	{
@@ -112,7 +113,7 @@ function waterlines()
 			console.log("Polygon Collision.");
 			array_polygons_waterlines[i].color(55);
 
-			tip = new Tooltip("Hi", mouseX, mouseY, 100, 40);
+			tip = new Tooltip("Polygon" + i, mouseX, mouseY, 100, 40);
 			tip.show();
 		}
 		else
