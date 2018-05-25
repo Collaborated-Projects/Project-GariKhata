@@ -388,4 +388,4 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     file.write(js_filler)
     file.write(js_function)
 
-parse("../Data Files/GKBaseMap.svg", "test.js")
+parse("../Data Files/GKPlotProfile.svg", "test.js")

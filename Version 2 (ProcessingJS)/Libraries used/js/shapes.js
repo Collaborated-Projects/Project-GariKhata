@@ -83,7 +83,7 @@ function Polygon(array_of_vectors, stroke_or_fill)
 		}
 		else if(stroke_or_fill === "stroke")
 		{
-			stroke(this.col)
+			stroke(this.col);
 		}
 		
 		beginShape();
@@ -109,10 +109,10 @@ function Rectangle(array_of_vectors, stroke_or_fill)
 	}
 	else if(stroke_or_fill === "stroke")
 	{
-		stroke(this.col)
+		stroke(this.col);
 	}
 	
-	rect(array_of_vectors[0].x, array_of_vectors[0].y, array_of_vectors[1].x, array_of_vectors[1].y);
+	rect(this.array_of_vectors[0].x, this.array_of_vectors[0].y, this.array_of_vectors[1].x, this.array_of_vectors[1].y);
 
 	this.color = function(c)
 	{
@@ -125,10 +125,10 @@ function Rectangle(array_of_vectors, stroke_or_fill)
 		}
 		else if(stroke_or_fill === "stroke")
 		{
-			stroke(this.col)
+			stroke(this.col);
 		}
 		
-		rect(array_of_vectors[0].x, array_of_vectors[0].y, array_of_vectors[1].x, array_of_vectors[1].y);
+		rect(this.array_of_vectors[0].x, this.array_of_vectors[0].y, this.array_of_vectors[1].x, this.array_of_vectors[1].y);
 	};
 }
 
