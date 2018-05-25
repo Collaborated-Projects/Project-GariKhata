@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GariKhata Neighbourhood Plan</title>
+		<link href="../_shared/demo.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/bootstrap.min.css" rel="stylesheet" type= text/css>
+		<link href="../Libraries used/css/stylesheet.css" rel="stylesheet" type= text/css>
+		<script src="../Libraries used/js/easeljs-0.8.2.min.js"></script> 
+		<script src="../Libraries used/js/foo9.createjs.tooltip.js"></script> 
+		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+	
+		<script>
+			var stage, showTip = false;
+			var tip = null;
+			var count = 0;
+			fillObj = [];
+			polygons = [];
+			polylines = [];
+			circles = [];
+
+			function init()
+			{
+				stage = new createjs.Stage("gkCanvas");
+				for(var circlenumber=0; circlenumber<55; circlenumber++)
+				{
+					circles.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polylinenumber=0; polylinenumber<6; polylinenumber++)
+				{
+					polylines.push(stage.addChild(new createjs.Shape()));
+				}
+				for(var polygonnumber=0; polygonnumber<9; polygonnumber++)
+				{
+					polygons.push(stage.addChild(new createjs.Shape()));
+				}
+			}
+
+			function tick(event)
+			{
+				if(tip != null)
+				{
+					tip.visible = false;
+				}
+
+				circles[0].graphics.beginFill("red");
+				circles[0].graphics.drawCircle(790, 149, 3);
+				if(circles[0].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[0].graphics.beginFill("green");
+					circles[0].graphics.drawCircle(790, 149, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle0", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[1].graphics.beginFill("red");
+				circles[1].graphics.drawCircle(725, 149, 3);
+				if(circles[1].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[1].graphics.beginFill("green");
+					circles[1].graphics.drawCircle(725, 149, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle1", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[2].graphics.beginFill("red");
+				circles[2].graphics.drawCircle(675, 148, 3);
+				if(circles[2].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[2].graphics.beginFill("green");
+					circles[2].graphics.drawCircle(675, 148, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle2", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[3].graphics.beginFill("red");
+				circles[3].graphics.drawCircle(641, 147, 3);
+				if(circles[3].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[3].graphics.beginFill("green");
+					circles[3].graphics.drawCircle(641, 147, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle3", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[4].graphics.beginFill("red");
+				circles[4].graphics.drawCircle(557, 151, 3);
+				if(circles[4].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[4].graphics.beginFill("green");
+					circles[4].graphics.drawCircle(557, 151, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle4", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[5].graphics.beginFill("red");
+				circles[5].graphics.drawCircle(515, 154, 3);
+				if(circles[5].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[5].graphics.beginFill("green");
+					circles[5].graphics.drawCircle(515, 154, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle5", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[6].graphics.beginFill("red");
+				circles[6].graphics.drawCircle(496, 102, 3);
+				if(circles[6].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[6].graphics.beginFill("green");
+					circles[6].graphics.drawCircle(496, 102, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle6", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[7].graphics.beginFill("red");
+				circles[7].graphics.drawCircle(495, 141, 3);
+				if(circles[7].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[7].graphics.beginFill("green");
+					circles[7].graphics.drawCircle(495, 141, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle7", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[8].graphics.beginFill("red");
+				circles[8].graphics.drawCircle(494, 156, 3);
+				if(circles[8].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[8].graphics.beginFill("green");
+					circles[8].graphics.drawCircle(494, 156, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle8", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[9].graphics.beginFill("red");
+				circles[9].graphics.drawCircle(493, 180, 3);
+				if(circles[9].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[9].graphics.beginFill("green");
+					circles[9].graphics.drawCircle(493, 180, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle9", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[10].graphics.beginFill("red");
+				circles[10].graphics.drawCircle(490, 238, 3);
+				if(circles[10].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[10].graphics.beginFill("green");
+					circles[10].graphics.drawCircle(490, 238, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle10", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[11].graphics.beginFill("red");
+				circles[11].graphics.drawCircle(488, 301, 3);
+				if(circles[11].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[11].graphics.beginFill("green");
+					circles[11].graphics.drawCircle(488, 301, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle11", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[12].graphics.beginFill("red");
+				circles[12].graphics.drawCircle(526, 296, 3);
+				if(circles[12].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[12].graphics.beginFill("green");
+					circles[12].graphics.drawCircle(526, 296, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle12", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[13].graphics.beginFill("red");
+				circles[13].graphics.drawCircle(611, 294, 3);
+				if(circles[13].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[13].graphics.beginFill("green");
+					circles[13].graphics.drawCircle(611, 294, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle13", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[14].graphics.beginFill("red");
+				circles[14].graphics.drawCircle(591, 296, 3);
+				if(circles[14].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[14].graphics.beginFill("green");
+					circles[14].graphics.drawCircle(591, 296, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle14", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[15].graphics.beginFill("red");
+				circles[15].graphics.drawCircle(678, 291, 3);
+				if(circles[15].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[15].graphics.beginFill("green");
+					circles[15].graphics.drawCircle(678, 291, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle15", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[16].graphics.beginFill("red");
+				circles[16].graphics.drawCircle(753, 288, 3);
+				if(circles[16].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[16].graphics.beginFill("green");
+					circles[16].graphics.drawCircle(753, 288, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle16", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[17].graphics.beginFill("red");
+				circles[17].graphics.drawCircle(789, 286, 3);
+				if(circles[17].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[17].graphics.beginFill("green");
+					circles[17].graphics.drawCircle(789, 286, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle17", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[18].graphics.beginFill("red");
+				circles[18].graphics.drawCircle(393, 294, 3);
+				if(circles[18].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[18].graphics.beginFill("green");
+					circles[18].graphics.drawCircle(393, 294, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle18", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[19].graphics.beginFill("red");
+				circles[19].graphics.drawCircle(343, 297, 3);
+				if(circles[19].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[19].graphics.beginFill("green");
+					circles[19].graphics.drawCircle(343, 297, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle19", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[20].graphics.beginFill("red");
+				circles[20].graphics.drawCircle(263, 300, 3);
+				if(circles[20].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[20].graphics.beginFill("green");
+					circles[20].graphics.drawCircle(263, 300, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle20", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[21].graphics.beginFill("red");
+				circles[21].graphics.drawCircle(180, 304, 3);
+				if(circles[21].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[21].graphics.beginFill("green");
+					circles[21].graphics.drawCircle(180, 304, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle21", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[22].graphics.beginFill("red");
+				circles[22].graphics.drawCircle(90, 306, 3);
+				if(circles[22].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[22].graphics.beginFill("green");
+					circles[22].graphics.drawCircle(90, 306, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle22", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[23].graphics.beginFill("red");
+				circles[23].graphics.drawCircle(791, 446, 3);
+				if(circles[23].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[23].graphics.beginFill("green");
+					circles[23].graphics.drawCircle(791, 446, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle23", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[24].graphics.beginFill("red");
+				circles[24].graphics.drawCircle(732, 446, 3);
+				if(circles[24].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[24].graphics.beginFill("green");
+					circles[24].graphics.drawCircle(732, 446, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle24", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[25].graphics.beginFill("red");
+				circles[25].graphics.drawCircle(661, 448, 3);
+				if(circles[25].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[25].graphics.beginFill("green");
+					circles[25].graphics.drawCircle(661, 448, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle25", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[26].graphics.beginFill("red");
+				circles[26].graphics.drawCircle(621, 448, 3);
+				if(circles[26].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[26].graphics.beginFill("green");
+					circles[26].graphics.drawCircle(621, 448, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle26", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[27].graphics.beginFill("red");
+				circles[27].graphics.drawCircle(569, 448, 3);
+				if(circles[27].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[27].graphics.beginFill("green");
+					circles[27].graphics.drawCircle(569, 448, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle27", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[28].graphics.beginFill("red");
+				circles[28].graphics.drawCircle(508, 448, 3);
+				if(circles[28].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[28].graphics.beginFill("green");
+					circles[28].graphics.drawCircle(508, 448, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle28", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[29].graphics.beginFill("red");
+				circles[29].graphics.drawCircle(488, 444, 3);
+				if(circles[29].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[29].graphics.beginFill("green");
+					circles[29].graphics.drawCircle(488, 444, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle29", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[30].graphics.beginFill("red");
+				circles[30].graphics.drawCircle(489, 375, 3);
+				if(circles[30].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[30].graphics.beginFill("green");
+					circles[30].graphics.drawCircle(489, 375, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle30", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[31].graphics.beginFill("red");
+				circles[31].graphics.drawCircle(472, 455, 3);
+				if(circles[31].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[31].graphics.beginFill("green");
+					circles[31].graphics.drawCircle(472, 455, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle31", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[32].graphics.beginFill("red");
+				circles[32].graphics.drawCircle(414, 457, 3);
+				if(circles[32].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[32].graphics.beginFill("green");
+					circles[32].graphics.drawCircle(414, 457, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle32", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[33].graphics.beginFill("red");
+				circles[33].graphics.drawCircle(367, 460, 3);
+				if(circles[33].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[33].graphics.beginFill("green");
+					circles[33].graphics.drawCircle(367, 460, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle33", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[34].graphics.beginFill("red");
+				circles[34].graphics.drawCircle(325, 462, 3);
+				if(circles[34].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[34].graphics.beginFill("green");
+					circles[34].graphics.drawCircle(325, 462, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle34", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[35].graphics.beginFill("red");
+				circles[35].graphics.drawCircle(262, 466, 3);
+				if(circles[35].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[35].graphics.beginFill("green");
+					circles[35].graphics.drawCircle(262, 466, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle35", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[36].graphics.beginFill("red");
+				circles[36].graphics.drawCircle(169, 471, 3);
+				if(circles[36].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[36].graphics.beginFill("green");
+					circles[36].graphics.drawCircle(169, 471, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle36", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[37].graphics.beginFill("red");
+				circles[37].graphics.drawCircle(120, 474, 3);
+				if(circles[37].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[37].graphics.beginFill("green");
+					circles[37].graphics.drawCircle(120, 474, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle37", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[38].graphics.beginFill("red");
+				circles[38].graphics.drawCircle(101, 459, 3);
+				if(circles[38].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[38].graphics.beginFill("green");
+					circles[38].graphics.drawCircle(101, 459, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle38", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[39].graphics.beginFill("red");
+				circles[39].graphics.drawCircle(46, 462, 3);
+				if(circles[39].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[39].graphics.beginFill("green");
+					circles[39].graphics.drawCircle(46, 462, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle39", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[40].graphics.beginFill("red");
+				circles[40].graphics.drawCircle(728, 577, 3);
+				if(circles[40].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[40].graphics.beginFill("green");
+					circles[40].graphics.drawCircle(728, 577, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle40", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[41].graphics.beginFill("red");
+				circles[41].graphics.drawCircle(685, 581, 3);
+				if(circles[41].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[41].graphics.beginFill("green");
+					circles[41].graphics.drawCircle(685, 581, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle41", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[42].graphics.beginFill("red");
+				circles[42].graphics.drawCircle(567, 588, 3);
+				if(circles[42].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[42].graphics.beginFill("green");
+					circles[42].graphics.drawCircle(567, 588, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle42", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[43].graphics.beginFill("red");
+				circles[43].graphics.drawCircle(489, 588, 3);
+				if(circles[43].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[43].graphics.beginFill("green");
+					circles[43].graphics.drawCircle(489, 588, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle43", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[44].graphics.beginFill("red");
+				circles[44].graphics.drawCircle(489, 527, 3);
+				if(circles[44].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[44].graphics.beginFill("green");
+					circles[44].graphics.drawCircle(489, 527, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle44", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[45].graphics.beginFill("red");
+				circles[45].graphics.drawCircle(472, 598, 3);
+				if(circles[45].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[45].graphics.beginFill("green");
+					circles[45].graphics.drawCircle(472, 598, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle45", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[46].graphics.beginFill("red");
+				circles[46].graphics.drawCircle(415, 602, 3);
+				if(circles[46].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[46].graphics.beginFill("green");
+					circles[46].graphics.drawCircle(415, 602, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle46", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[47].graphics.beginFill("red");
+				circles[47].graphics.drawCircle(367, 604, 3);
+				if(circles[47].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[47].graphics.beginFill("green");
+					circles[47].graphics.drawCircle(367, 604, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle47", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[48].graphics.beginFill("red");
+				circles[48].graphics.drawCircle(338, 588, 3);
+				if(circles[48].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[48].graphics.beginFill("green");
+					circles[48].graphics.drawCircle(338, 588, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle48", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[49].graphics.beginFill("red");
+				circles[49].graphics.drawCircle(308, 605, 3);
+				if(circles[49].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[49].graphics.beginFill("green");
+					circles[49].graphics.drawCircle(308, 605, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle49", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[50].graphics.beginFill("red");
+				circles[50].graphics.drawCircle(252, 605, 3);
+				if(circles[50].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[50].graphics.beginFill("green");
+					circles[50].graphics.drawCircle(252, 605, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle50", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[51].graphics.beginFill("red");
+				circles[51].graphics.drawCircle(213, 594, 3);
+				if(circles[51].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[51].graphics.beginFill("green");
+					circles[51].graphics.drawCircle(213, 594, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle51", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[52].graphics.beginFill("red");
+				circles[52].graphics.drawCircle(90, 605, 3);
+				if(circles[52].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[52].graphics.beginFill("green");
+					circles[52].graphics.drawCircle(90, 605, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle52", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[53].graphics.beginFill("red");
+				circles[53].graphics.drawCircle(3, 609, 3);
+				if(circles[53].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[53].graphics.beginFill("green");
+					circles[53].graphics.drawCircle(3, 609, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle53", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				circles[54].graphics.beginFill("red");
+				circles[54].graphics.drawCircle(489, 749, 3);
+				if(circles[54].hitTest(stage.mouseX, stage.mouseY))
+				{
+					circles[54].graphics.beginFill("green");
+					circles[54].graphics.drawCircle(489, 749, 3);
+
+					tip = new foo9.createjs.Tooltip("Circle54", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polylines[0].graphics.beginStroke("#00cc00").command;
+				polylines[0].graphics.moveTo(802, 149).lineTo(641, 147).lineTo(599, 147).lineTo(494, 156);
+				if(polylines[0].hitTest(stage.mouseX, stage.mouseY))
+				{
+				polylines[0].graphics.beginStroke("#00cc00").command;
+				polylines[0].graphics.moveTo(802, 149).lineTo(641, 147).lineTo(599, 147).lineTo(494, 156);
+					tip = new foo9.createjs.Tooltip("Polyline0", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polylines[1].graphics.beginStroke("#00cc00").command;
+				polylines[1].graphics.moveTo(802, 805).lineTo(802, 573).lineTo(802, 0);
+				if(polylines[1].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polylines[1].graphics.beginStroke("#00cc00").command;
+					polylines[1].graphics.moveTo(802, 805).lineTo(802, 573).lineTo(802, 0);
+					tip = new foo9.createjs.Tooltip("Polyline1", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polylines[3].graphics.beginStroke("#00cc00").command;
+				polylines[3].graphics.moveTo(90, 306).lineTo(393, 295).lineTo(489, 301).lineTo(538, 295).lineTo(580, 295).lineTo(802, 285);
+				if(polylines[3].hitTest(stage.mouseX, stage.mouseY))
+				{
+				polylines[3].graphics.beginStroke("#00cc00").command;
+				polylines[3].graphics.moveTo(90, 306).lineTo(393, 295).lineTo(489, 301).lineTo(538, 295).lineTo(580, 295).lineTo(802, 285);
+					tip = new foo9.createjs.Tooltip("Polyline3", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polylines[4].graphics.beginStroke("#00cc00").command;
+				polylines[4].graphics.moveTo(1, 459).lineTo(46, 462).lineTo(101, 459).lineTo(119, 474).lineTo(473, 455).lineTo(489, 443).lineTo(508, 449).lineTo(802, 447);
+				if(polylines[4].hitTest(stage.mouseX, stage.mouseY))
+				{
+				polylines[4].graphics.beginStroke("#00cc00").command;
+				polylines[4].graphics.moveTo(1, 459).lineTo(46, 462).lineTo(101, 459).lineTo(119, 474).lineTo(473, 455).lineTo(489, 443).lineTo(508, 449).lineTo(802, 447);
+					tip = new foo9.createjs.Tooltip("Polyline4", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polylines[5].graphics.beginStroke("#00cc00").command;
+				polylines[5].graphics.moveTo(3, 609).lineTo(142, 604).lineTo(213, 593).lineTo(250, 605).lineTo(308, 605).lineTo(338, 588).lineTo(367, 604).lineTo(473, 598).lineTo(489, 588).lineTo(508, 593).lineTo(611, 586).lineTo(769, 575).lineTo(802, 573);
+				if(polylines[5].hitTest(stage.mouseX, stage.mouseY))
+				{
+				polylines[5].graphics.beginStroke("#00cc00").command;
+				polylines[5].graphics.moveTo(3, 609).lineTo(142, 604).lineTo(213, 593).lineTo(250, 605).lineTo(308, 605).lineTo(338, 588).lineTo(367, 604).lineTo(473, 598).lineTo(489, 588).lineTo(508, 593).lineTo(611, 586).lineTo(769, 575).lineTo(802, 573);
+					tip = new foo9.createjs.Tooltip("Polyline5", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[0].graphics.beginStroke("black").command;
+				polygons[0].graphics.moveTo(508, 573).lineTo(517, 573).lineTo(776, 561).lineTo(792, 561).lineTo(792, 452).lineTo(772, 452).lineTo(508, 456).lineTo(508, 573);
+				if(polygons[0].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[0].graphics.beginStroke("black").command;
+					polygons[0].graphics.moveTo(508, 573).lineTo(517, 573).lineTo(776, 561).lineTo(792, 561).lineTo(792, 452).lineTo(772, 452).lineTo(508, 456).lineTo(508, 573);
+					tip = new foo9.createjs.Tooltip("Polygon0", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[1].graphics.beginStroke("black").command;
+				polygons[1].graphics.moveTo(472, 780).lineTo(463, 780).lineTo(11, 763).lineTo(3, 763).lineTo(3, 754).lineTo(4, 621).lineTo(16, 621).lineTo(473, 604).lineTo(473, 612).lineTo(472, 780);
+				if(polygons[1].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[1].graphics.beginStroke("black").command;
+					polygons[1].graphics.moveTo(472, 780).lineTo(463, 780).lineTo(11, 763).lineTo(3, 763).lineTo(3, 754).lineTo(4, 621).lineTo(16, 621).lineTo(473, 604).lineTo(473, 612).lineTo(472, 780);
+					tip = new foo9.createjs.Tooltip("Polygon1", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[2].graphics.beginStroke("black").command;
+				polygons[2].graphics.moveTo(507, 599).lineTo(506, 784).lineTo(518, 784).lineTo(776, 805).lineTo(791, 805).lineTo(791, 580).lineTo(772, 580).lineTo(513, 599).lineTo(507, 599);
+				if(polygons[2].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[2].graphics.beginStroke("black").command;
+					polygons[2].graphics.moveTo(507, 599).lineTo(506, 784).lineTo(518, 784).lineTo(776, 805).lineTo(791, 805).lineTo(791, 580).lineTo(772, 580).lineTo(513, 599).lineTo(507, 599);
+					tip = new foo9.createjs.Tooltip("Polygon2", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[3].graphics.beginStroke("black").command;
+				polygons[3].graphics.moveTo(472, 579).lineTo(464, 579).lineTo(12, 596).lineTo(4, 596).lineTo(3, 484).lineTo(15, 484).lineTo(472, 460).lineTo(472, 579);
+				if(polygons[3].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[3].graphics.beginStroke("black").command;
+					polygons[3].graphics.moveTo(472, 579).lineTo(464, 579).lineTo(12, 596).lineTo(4, 596).lineTo(3, 484).lineTo(15, 484).lineTo(472, 460).lineTo(472, 579);
+					tip = new foo9.createjs.Tooltip("Polygon3", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[4].graphics.beginStroke("black").command;
+				polygons[4].graphics.moveTo(1, 453).lineTo(16, 453).lineTo(46, 455).lineTo(472, 432).lineTo(472, 314).lineTo(463, 314).lineTo(296, 322).lineTo(62, 335).lineTo(13, 368).lineTo(1, 368).lineTo(1, 453);
+				if(polygons[4].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[4].graphics.beginStroke("black").command;
+					polygons[4].graphics.moveTo(1, 453).lineTo(16, 453).lineTo(46, 455).lineTo(472, 432).lineTo(472, 314).lineTo(463, 314).lineTo(296, 322).lineTo(62, 335).lineTo(13, 368).lineTo(1, 368).lineTo(1, 453);
+					tip = new foo9.createjs.Tooltip("Polygon4", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[5].graphics.beginStroke("black").command;
+				polygons[5].graphics.moveTo(789, 421).lineTo(772, 421).lineTo(508, 427).lineTo(508, 318).lineTo(517, 318).lineTo(777, 312).lineTo(789, 312).lineTo(789, 421);
+				if(polygons[5].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[5].graphics.beginStroke("black").command;
+					polygons[5].graphics.moveTo(789, 421).lineTo(772, 421).lineTo(508, 427).lineTo(508, 318).lineTo(517, 318).lineTo(777, 312).lineTo(789, 312).lineTo(789, 421);
+					tip = new foo9.createjs.Tooltip("Polygon5", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[6].graphics.beginStroke("black").command;
+				polygons[6].graphics.moveTo(789, 280).lineTo(789, 173).lineTo(770, 173).lineTo(641, 171).lineTo(518, 180).lineTo(508, 180).lineTo(508, 291).lineTo(572, 291).lineTo(653, 286).lineTo(789, 280);
+				if(polygons[6].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[6].graphics.beginStroke("black").command;
+					polygons[6].graphics.moveTo(789, 280).lineTo(789, 173).lineTo(770, 173).lineTo(641, 171).lineTo(518, 180).lineTo(508, 180).lineTo(508, 291).lineTo(572, 291).lineTo(653, 286).lineTo(789, 280);
+					tip = new foo9.createjs.Tooltip("Polygon6", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[7].graphics.beginStroke("black").command;
+				polygons[7].graphics.moveTo(515, 145).lineTo(515, 48).lineTo(576, 18).lineTo(590, 15).lineTo(790, 9).lineTo(790, 141).lineTo(598, 141).lineTo(515, 145);
+				if(polygons[7].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[7].graphics.beginStroke("black").command;
+					polygons[7].graphics.moveTo(515, 145).lineTo(515, 48).lineTo(576, 18).lineTo(590, 15).lineTo(790, 9).lineTo(790, 141).lineTo(598, 141).lineTo(515, 145);
+					tip = new foo9.createjs.Tooltip("Polygon7", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				polygons[8].graphics.beginStroke("black").command;
+				polygons[8].graphics.moveTo(482, 101).lineTo(477, 286).lineTo(353, 289).lineTo(119, 301).lineTo(116, 301).lineTo(136, 280).lineTo(475, 101).lineTo(482, 101);
+				if(polygons[8].hitTest(stage.mouseX, stage.mouseY))
+				{
+					polygons[8].graphics.beginStroke("black").command;
+					polygons[8].graphics.moveTo(482, 101).lineTo(477, 286).lineTo(353, 289).lineTo(119, 301).lineTo(116, 301).lineTo(136, 280).lineTo(475, 101).lineTo(482, 101);
+					tip = new foo9.createjs.Tooltip("Polygon8", 100, 40);
+					stage.addChild(tip);
+					tip.x = stage.mouseX - tip.width/2;
+					tip.y = stage.mouseY - tip.height;
+				}
+
+				stage.update(event);
+			}
+
+			function sewagelines()
+			{
+				fillObj.push(circles[0].graphics.beginFill("red"));
+				circles[0].graphics.drawCircle(790, 149, 3);
+
+				fillObj.push(circles[1].graphics.beginFill("red"));
+				circles[1].graphics.drawCircle(725, 149, 3);
+
+				fillObj.push(circles[2].graphics.beginFill("red"));
+				circles[2].graphics.drawCircle(675, 148, 3);
+
+				fillObj.push(circles[3].graphics.beginFill("red"));
+				circles[3].graphics.drawCircle(641, 147, 3);
+
+				fillObj.push(circles[4].graphics.beginFill("red"));
+				circles[4].graphics.drawCircle(557, 151, 3);
+
+				fillObj.push(circles[5].graphics.beginFill("red"));
+				circles[5].graphics.drawCircle(515, 154, 3);
+
+				fillObj.push(circles[6].graphics.beginFill("red"));
+				circles[6].graphics.drawCircle(496, 102, 3);
+
+				fillObj.push(circles[7].graphics.beginFill("red"));
+				circles[7].graphics.drawCircle(495, 141, 3);
+
+				fillObj.push(circles[8].graphics.beginFill("red"));
+				circles[8].graphics.drawCircle(494, 156, 3);
+
+				fillObj.push(circles[9].graphics.beginFill("red"));
+				circles[9].graphics.drawCircle(493, 180, 3);
+
+				fillObj.push(circles[10].graphics.beginFill("red"));
+				circles[10].graphics.drawCircle(490, 238, 3);
+
+				fillObj.push(circles[11].graphics.beginFill("red"));
+				circles[11].graphics.drawCircle(488, 301, 3);
+
+				fillObj.push(circles[12].graphics.beginFill("red"));
+				circles[12].graphics.drawCircle(526, 296, 3);
+
+				fillObj.push(circles[13].graphics.beginFill("red"));
+				circles[13].graphics.drawCircle(611, 294, 3);
+
+				fillObj.push(circles[14].graphics.beginFill("red"));
+				circles[14].graphics.drawCircle(591, 296, 3);
+
+				fillObj.push(circles[15].graphics.beginFill("red"));
+				circles[15].graphics.drawCircle(678, 291, 3);
+
+				fillObj.push(circles[16].graphics.beginFill("red"));
+				circles[16].graphics.drawCircle(753, 288, 3);
+
+				fillObj.push(circles[17].graphics.beginFill("red"));
+				circles[17].graphics.drawCircle(789, 286, 3);
+
+				fillObj.push(circles[18].graphics.beginFill("red"));
+				circles[18].graphics.drawCircle(393, 294, 3);
+
+				fillObj.push(circles[19].graphics.beginFill("red"));
+				circles[19].graphics.drawCircle(343, 297, 3);
+
+				fillObj.push(circles[20].graphics.beginFill("red"));
+				circles[20].graphics.drawCircle(263, 300, 3);
+
+				fillObj.push(circles[21].graphics.beginFill("red"));
+				circles[21].graphics.drawCircle(180, 304, 3);
+
+				fillObj.push(circles[22].graphics.beginFill("red"));
+				circles[22].graphics.drawCircle(90, 306, 3);
+
+				fillObj.push(circles[23].graphics.beginFill("red"));
+				circles[23].graphics.drawCircle(791, 446, 3);
+
+				fillObj.push(circles[24].graphics.beginFill("red"));
+				circles[24].graphics.drawCircle(732, 446, 3);
+
+				fillObj.push(circles[25].graphics.beginFill("red"));
+				circles[25].graphics.drawCircle(661, 448, 3);
+
+				fillObj.push(circles[26].graphics.beginFill("red"));
+				circles[26].graphics.drawCircle(621, 448, 3);
+
+				fillObj.push(circles[27].graphics.beginFill("red"));
+				circles[27].graphics.drawCircle(569, 448, 3);
+
+				fillObj.push(circles[28].graphics.beginFill("red"));
+				circles[28].graphics.drawCircle(508, 448, 3);
+
+				fillObj.push(circles[29].graphics.beginFill("red"));
+				circles[29].graphics.drawCircle(488, 444, 3);
+
+				fillObj.push(circles[30].graphics.beginFill("red"));
+				circles[30].graphics.drawCircle(489, 375, 3);
+
+				fillObj.push(circles[31].graphics.beginFill("red"));
+				circles[31].graphics.drawCircle(472, 455, 3);
+
+				fillObj.push(circles[32].graphics.beginFill("red"));
+				circles[32].graphics.drawCircle(414, 457, 3);
+
+				fillObj.push(circles[33].graphics.beginFill("red"));
+				circles[33].graphics.drawCircle(367, 460, 3);
+
+				fillObj.push(circles[34].graphics.beginFill("red"));
+				circles[34].graphics.drawCircle(325, 462, 3);
+
+				fillObj.push(circles[35].graphics.beginFill("red"));
+				circles[35].graphics.drawCircle(262, 466, 3);
+
+				fillObj.push(circles[36].graphics.beginFill("red"));
+				circles[36].graphics.drawCircle(169, 471, 3);
+
+				fillObj.push(circles[37].graphics.beginFill("red"));
+				circles[37].graphics.drawCircle(120, 474, 3);
+
+				fillObj.push(circles[38].graphics.beginFill("red"));
+				circles[38].graphics.drawCircle(101, 459, 3);
+
+				fillObj.push(circles[39].graphics.beginFill("red"));
+				circles[39].graphics.drawCircle(46, 462, 3);
+
+				fillObj.push(circles[40].graphics.beginFill("red"));
+				circles[40].graphics.drawCircle(728, 577, 3);
+
+				fillObj.push(circles[41].graphics.beginFill("red"));
+				circles[41].graphics.drawCircle(685, 581, 3);
+
+				fillObj.push(circles[42].graphics.beginFill("red"));
+				circles[42].graphics.drawCircle(567, 588, 3);
+
+				fillObj.push(circles[43].graphics.beginFill("red"));
+				circles[43].graphics.drawCircle(489, 588, 3);
+
+				fillObj.push(circles[44].graphics.beginFill("red"));
+				circles[44].graphics.drawCircle(489, 527, 3);
+
+				fillObj.push(circles[45].graphics.beginFill("red"));
+				circles[45].graphics.drawCircle(472, 598, 3);
+
+				fillObj.push(circles[46].graphics.beginFill("red"));
+				circles[46].graphics.drawCircle(415, 602, 3);
+
+				fillObj.push(circles[47].graphics.beginFill("red"));
+				circles[47].graphics.drawCircle(367, 604, 3);
+
+				fillObj.push(circles[48].graphics.beginFill("red"));
+				circles[48].graphics.drawCircle(338, 588, 3);
+
+				fillObj.push(circles[49].graphics.beginFill("red"));
+				circles[49].graphics.drawCircle(308, 605, 3);
+
+				fillObj.push(circles[50].graphics.beginFill("red"));
+				circles[50].graphics.drawCircle(252, 605, 3);
+
+				fillObj.push(circles[51].graphics.beginFill("red"));
+				circles[51].graphics.drawCircle(213, 594, 3);
+
+				fillObj.push(circles[52].graphics.beginFill("red"));
+				circles[52].graphics.drawCircle(90, 605, 3);
+
+				fillObj.push(circles[53].graphics.beginFill("red"));
+				circles[53].graphics.drawCircle(3, 609, 3);
+
+				fillObj.push(circles[54].graphics.beginFill("red"));
+				circles[54].graphics.drawCircle(489, 749, 3);
+
+				fillObj.push(polylines[0].graphics.beginStroke("black").command);
+				polylines[0].graphics.moveTo(802, 149).lineTo(641, 147).lineTo(599, 147).lineTo(494, 156);
+
+				fillObj.push(polylines[1].graphics.beginStroke("black").command);
+				polylines[1].graphics.moveTo(802, 805).lineTo(802, 573).lineTo(802, 0);
+
+				fillObj.push(polylines[3].graphics.beginStroke("black").command);
+				polylines[3].graphics.moveTo(90, 306).lineTo(393, 295).lineTo(489, 301).lineTo(538, 295).lineTo(580, 295).lineTo(802, 285);
+
+				fillObj.push(polylines[4].graphics.beginStroke("black").command);
+				polylines[4].graphics.moveTo(1, 459).lineTo(46, 462).lineTo(101, 459).lineTo(119, 474).lineTo(473, 455).lineTo(489, 443).lineTo(508, 449).lineTo(802, 447);
+
+				fillObj.push(polylines[5].graphics.beginStroke("black").command);
+				polylines[5].graphics.moveTo(3, 609).lineTo(142, 604).lineTo(213, 593).lineTo(250, 605).lineTo(308, 605).lineTo(338, 588).lineTo(367, 604).lineTo(473, 598).lineTo(489, 588).lineTo(508, 593).lineTo(611, 586).lineTo(769, 575).lineTo(802, 573);
+
+				fillObj.push(polygons[0].graphics.beginStroke("black").command);
+				polygons[0].graphics.moveTo(508, 573).lineTo(517, 573).lineTo(776, 561).lineTo(792, 561).lineTo(792, 452).lineTo(772, 452).lineTo(508, 456).lineTo(508, 573);
+
+				fillObj.push(polygons[1].graphics.beginStroke("black").command);
+				polygons[1].graphics.moveTo(472, 780).lineTo(463, 780).lineTo(11, 763).lineTo(3, 763).lineTo(3, 754).lineTo(4, 621).lineTo(16, 621).lineTo(473, 604).lineTo(473, 612).lineTo(472, 780);
+
+				fillObj.push(polygons[2].graphics.beginStroke("black").command);
+				polygons[2].graphics.moveTo(507, 599).lineTo(506, 784).lineTo(518, 784).lineTo(776, 805).lineTo(791, 805).lineTo(791, 580).lineTo(772, 580).lineTo(513, 599).lineTo(507, 599);
+
+				fillObj.push(polygons[3].graphics.beginStroke("black").command);
+				polygons[3].graphics.moveTo(472, 579).lineTo(464, 579).lineTo(12, 596).lineTo(4, 596).lineTo(3, 484).lineTo(15, 484).lineTo(472, 460).lineTo(472, 579);
+
+				fillObj.push(polygons[4].graphics.beginStroke("black").command);
+				polygons[4].graphics.moveTo(1, 453).lineTo(16, 453).lineTo(46, 455).lineTo(472, 432).lineTo(472, 314).lineTo(463, 314).lineTo(296, 322).lineTo(62, 335).lineTo(13, 368).lineTo(1, 368).lineTo(1, 453);
+
+				fillObj.push(polygons[5].graphics.beginStroke("black").command);
+				polygons[5].graphics.moveTo(789, 421).lineTo(772, 421).lineTo(508, 427).lineTo(508, 318).lineTo(517, 318).lineTo(777, 312).lineTo(789, 312).lineTo(789, 421);
+
+				fillObj.push(polygons[6].graphics.beginStroke("black").command);
+				polygons[6].graphics.moveTo(789, 280).lineTo(789, 173).lineTo(770, 173).lineTo(641, 171).lineTo(518, 180).lineTo(508, 180).lineTo(508, 291).lineTo(572, 291).lineTo(653, 286).lineTo(789, 280);
+
+				fillObj.push(polygons[7].graphics.beginStroke("black").command);
+				polygons[7].graphics.moveTo(515, 145).lineTo(515, 48).lineTo(576, 18).lineTo(590, 15).lineTo(790, 9).lineTo(790, 141).lineTo(598, 141).lineTo(515, 145);
+
+				fillObj.push(polygons[8].graphics.beginStroke("black").command);
+				polygons[8].graphics.moveTo(482, 101).lineTo(477, 286).lineTo(353, 289).lineTo(119, 301).lineTo(116, 301).lineTo(136, 280).lineTo(475, 101).lineTo(482, 101);
+
+				createjs.Ticker.on("tick", tick);
+				stage.update();
+			}
+
+			$(document).ready(function()
+				{
+					sewagelines();
+				});
+		</script>
+	</head>
+
+	<body onload="init();">
+		<div id="divContainer">
+			<div id="divHeader">
+				<div id="divLogo">
+					<img src="../Media/images/logo.png" align="left">
+				</div>
+				<h1>Project GariKhata</h1>
+				<h5>An open-source research project for neighbourhood planning</h5>
+			</div>
+			
+			<div id="divNavigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li>
+						<a href="#">Maps</a>
+						<ul>
+							<li><a href="basemap.html">Base Map</a></li>
+							<li><a href="plotprofile.html">Plot Profile</a></li>
+							<li><a href="gaslines.html">Gas Lines</a></li>
+							<li><a href="waterlines.html">Water Lines</a></li>
+							<li><a href="sewagelines.html">Sewage Lines</a></li>
+						</ul>
+					</li>
+					<li><a href="contact_us.html">Contact Us</a></li>
+				</ul>
+			</div>
+
+			<div id="divContent">
+				
+				
+				<div id="divNews">
+					<div id="divNewsContent">
+						<h4>News &amp Updates:</h4>
+						<ul>
+							<li>The website is currently under maintenance.</li>
+							<br>
+							<li>Project GariKhata is an open-source project.</li>
+						</ul>
+					</div>
+				</div>
+				<div id="divLinks">
+					<i><a href="https://www.google.com/maps/place/Gari+Khata,+Karachi,+Karachi+City,+Sindh/data=!4m2!3m1!1s0x3eb33e0dfc00c675:0xa833274e8b1b0b7d?sa=X&ved=0ahUKEwj29aHwtILbAhUGxxQKHex9ATgQ8gEIIzAA" target="_blank">View GariKhata in Google Maps.</a></i>
+				</div>
+
+				<div id="divSewageLines">
+					<h2>Sewage Lines View:</h2>
+					<canvas id="gkCanvas" width="825" height="825">
+						 Project GariKhata: GariKhata Neighbourhood Plan 
+					</canvas>	
+				</div>
+			</div>
+
+			<footer>
+				<i>Copyright &copy Emad Bin Abid and Saman Gaziani.</i>
+				<br>
+				<i><u>An open-source research project for neighbourhood planning.</u></i>
+				<img src="../Media/images/logo.png" style="float: left; margin-top: -13px; margin-left: 10px;" width="50px;">
+			</footer>
+		</div>
+	</body>
+</html>
