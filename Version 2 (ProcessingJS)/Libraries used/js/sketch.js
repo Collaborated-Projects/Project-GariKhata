@@ -64,9 +64,10 @@ function setup()
 
 	/*basmapData();
 	plotprofileData();*/
-	waterlinesData();
+	//waterlinesData();
 	/*gaslinesData();
 	sewagelinesData();*/
+	testData();
 }
 
 				
@@ -90,6 +91,7 @@ function draw()
 
 	if(num == 1)
 	{
-		waterlines();	
+		test();
+		//waterlines();	
 	}
 }

@@ -1,3 +1,53 @@
+//Ellipse
+function Ellipse(vector_point, radiusX, radiusY, stroke_or_fill)
+{
+	this.vector_point = vector_point;
+	this.radiusX = radiusX;
+	this.radiusY = radiusY;
+
+	this.col = 135;
+
+	if(stroke_or_fill === "fill")
+	{
+		fill(this.col);
+	}
+	else if(stroke_or_fill === "stroke")
+	{
+		stroke(this.col)
+	}
+	
+	ellipse(this.vector_point.x, this.vector_point.y, this.radiusX, this.radiusY);
+
+	this.color = function(c)
+	{
+		//clear();
+		this.col = c;
+		
+		if(stroke_or_fill === "fill")
+		{
+			fill(this.col);
+		}
+		else if(stroke_or_fill === "stroke")
+		{
+			stroke(this.col)
+		}
+		
+		ellipse(this.vector_point.x, this.vector_point.y, this.radiusX, this.radiusY);
+	};
+
+
+}
+
+//Circle
+function Circle(vector_point, radius, stroke_or_fill)
+{
+	this.vector_point = vector_point;
+	this.radius = radius;
+
+	//Calling a function
+	var circle = new Ellipse(this.vector_point, this.radius, this.radius, stroke_or_fill);
+}
+
 //Polygon
 function Polygon(array_of_vectors, stroke_or_fill)
 {
@@ -44,6 +94,15 @@ function Polygon(array_of_vectors, stroke_or_fill)
 		}
 		endShape();
 	};
+}
+
+//Rectangle
+function Rectangle(array_of_vectors, stroke_or_fill)
+{
+	this.array_of_vectors = array_of_vectors;
+
+	//Calling a function
+	var rectangle = new Polygon(this.array_of_vectors, stroke_or_fill);
 }
 
 //PolyLine

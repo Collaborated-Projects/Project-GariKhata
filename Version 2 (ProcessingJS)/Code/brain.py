@@ -63,8 +63,8 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
 
     for shape in shapes_list:
         js_filler += '//' + shape + '\n'
-        js_filler += 'var array_' + shape + '_' + html_filename[0:len(html_filename)-3] + ' = [];\n' \
-                        'var pointer_' + shape + '_' + html_filename[0:len(html_filename)-3] + ' = null;\n\n'
+        js_filler += 'var array_' + shape + 's_' + html_filename[0:len(html_filename)-3] + ' = [];\n' \
+                        'var pointer_' + shape + 's_' + html_filename[0:len(html_filename)-3] + ' = null;\n\n'
     js_filler += '\n\n'
 
     js_filler += '//Tooltip\n' \
@@ -234,7 +234,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         js_filler += '];\n'
                         js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ' = new PolyLine('+\
                                      shape[0] + str(shapeCounter) + ');\n'
-                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ' = pointer_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ';\n\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[' + str(polyline_no) + '] = pointer_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + ';\n\n'
 
 
 
@@ -250,7 +250,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         js_filler += '];\n'
                         js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new PolyLine(' + \
                                      shape[0] + str(shapeCounter) + ');\n'
-                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(polyline_no) + '] = pointer_' + shape[
                                          0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
 
@@ -275,7 +275,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                 js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
                                 '\t{\n'
                 js_function += '\t\tvar j=0;\n'
-                js_function += '\t\tfor(j=0; j<array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].array_of_vectors.length; j++)\n'
+                js_function += '\t\tfor(j=0; j<array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].array_of_vectors.length - 1; j++)\n'
                 js_function += '\t\t{\n\t\t\tif(collidePointLine(mouseX, mouseY, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] +\
                                '[i].array_of_vectors[j].x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3]  + \
                                '[i].array_of_vectors[j].y, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] +\
@@ -308,7 +308,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         js_filler += '];\n'
                         js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new Polygon(' + \
                                      shape[0] + str(shapeCounter) + ', "stroke");\n'
-                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(polygon_no) + '] = pointer_' + shape[
                                          0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
 
@@ -324,7 +324,7 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         js_filler += '];\n'
                         js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = new Polygon(' + \
                                      shape[0] + str(shapeCounter) + ', "fill");\n'
-                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ' = pointer_' + shape[
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(polygon_no) + '] = pointer_' + shape[
                                          0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
 
