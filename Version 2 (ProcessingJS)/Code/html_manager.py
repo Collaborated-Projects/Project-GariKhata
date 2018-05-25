@@ -83,6 +83,7 @@ def html_call_js_function(function_name_with_parameters):
 
 #html_preparetemplate("index2.html", "GariKhata Neighbourhood Plan", ["../_shared/demo.css", "stylesheet", "text/css"], ["easeljs-0.8.2.min.js", "foo9.createjs.tooltip.js"],"", [])
 
+'''
 html_preparetemplate("index.html", "Project: GariKhata", [], ["../Libraries used/js/p5.min.js", "../Libraries used/js/jquery-3.2.1.js", "../Libraries used/js/p5.collide2d.min.js",
                                                               "../Libraries used/js/basemap.js",
                                                               "../Libraries used/js/plotprofile.js",
@@ -92,3 +93,5 @@ html_preparetemplate("index.html", "Project: GariKhata", [], ["../Libraries used
                                                               "../Version 2 (ProcessingJS)/shapes.js",
                                                               "../Version 2 (ProcessingJS)/test_p5.js.js",
                                                               "../Version 2 (ProcessingJS)/sketch.js"], "", [])
+
+'''

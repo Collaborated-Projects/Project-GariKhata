@@ -100,9 +100,36 @@ function Polygon(array_of_vectors, stroke_or_fill)
 function Rectangle(array_of_vectors, stroke_or_fill)
 {
 	this.array_of_vectors = array_of_vectors;
+	
+	this.col = 135;
 
-	//Calling a function
-	var rectangle = new Polygon(this.array_of_vectors, stroke_or_fill);
+	if(stroke_or_fill === "fill")
+	{
+		fill(this.col);
+	}
+	else if(stroke_or_fill === "stroke")
+	{
+		stroke(this.col)
+	}
+	
+	rect(array_of_vectors[0].x, array_of_vectors[0].y, array_of_vectors[1].x, array_of_vectors[1].y);
+
+	this.color = function(c)
+	{
+		//clear();
+		this.col = c;
+		
+		if(stroke_or_fill === "fill")
+		{
+			fill(this.col);
+		}
+		else if(stroke_or_fill === "stroke")
+		{
+			stroke(this.col)
+		}
+		
+		rect(array_of_vectors[0].x, array_of_vectors[0].y, array_of_vectors[1].x, array_of_vectors[1].y);
+	};
 }
 
 //PolyLine

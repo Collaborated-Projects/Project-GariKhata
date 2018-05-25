@@ -75,39 +75,52 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
 
                                                                             ##canvas name hard-coded. FIX IT!
     js_function = ''
+    js_function += 'function ' + html_filename[0:len(html_filename) - 3] + '()\n'
+    js_function += '{\n'
+    js_function += '\tclear();\n' \
+                   '\tvar i = 0;\n\n'
+    print(rects_info)
 
     for shape in count_shapes:
+
         if(shape[1] != 0):
             if(shape[0] == "rect"):
+                shapeCounter = 0
+                js_filler += '\t//' + shape[0] + '\n'
 
                 for rect_no in range(len(rects_info)):
                     if (rects_info[rect_no][0] == 'cls-1'):
-                         pass
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
+
+                        for coordinate in range(0, len(rects_info[rect_no][1])):
+                            js_filler += 'createVector' + str(rects_info[rect_no][1][coordinate])
+
+                            if (coordinate != len(rects_info[rect_no][1]) - 1):
+                                js_filler += ', '
+
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[
+                                                                      0:len(html_filename) - 3] + ' = new Rectangle(' + \
+                                     shape[0] + str(shapeCounter) + ', "stroke");\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(
+                            rect_no) + '] = pointer_' + shape[0] + 's_' + html_filename[
+                                                                          0:len(html_filename) - 3] + ';\n\n'
 
                     if (rects_info[rect_no][0] == 'cls-2'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("blue"));\n' \
-                                         '\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.drawRect(' + str(rects_info[rect_no][1][0][0])\
-                                            + ', ' + str(rects_info[rect_no][1][0][1]) + ', ' + str(rects_info[rect_no][1][1][0]) + ', ' + str(rects_info[rect_no][1][1][1])\
-                                          + ');\n\n'
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = ['
 
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("red"));\n' \
-                                            '\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.drawRect(' + str(rects_info[rect_no][1][0][0]) \
-                                            + ', ' + str(rects_info[rect_no][1][0][1]) + ', ' + str(rects_info[rect_no][1][1][0]) + ', ' + str(rects_info[rect_no][1][1][1]) \
-                                            + ');\n'
+                        for coordinate in range(0, len(rects_info[rect_no][1])):
+                            js_filler += 'createVector' + str(rects_info[rect_no][1][coordinate])
 
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(rect_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                            '\t\t\t\t{\n' \
-                                            '\t\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.beginFill("green"));\n' \
-                                            '\t\t\t\t\t' + shape[0] + 's[' + str(rect_no) + '].graphics.drawRect(' + str(rects_info[rect_no][1][0][0]) \
-                                             + ', ' + str(rects_info[rect_no][1][0][1]) + ', ' + str(rects_info[rect_no][1][1][0]) + ', ' + str(rects_info[rect_no][1][1][1]) \
-                                             + ');\n\n'
+                            if (coordinate != len(rects_info[rect_no][1]) - 1):
+                                js_filler += ', '
 
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Rectangle' + str(rect_no) + '", 100, 40);\n' \
-                                            '\t\t\t\t\tstage.addChild(tip);\n' \
-                                            '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                            '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
+                        js_filler += '];\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[
+                                                                      0:len(html_filename) - 3] + ' = new Rectangle(' + \
+                                     shape[0] + str(shapeCounter) + ', "fill");\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(
+                            rect_no) + '] = pointer_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
                     if (rects_info[rect_no][0] == 'cls-3'):
                         pass
@@ -118,7 +131,35 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                     if (rects_info[rect_no][0] == 'cls-6'):
                         pass
 
+                    shapeCounter += 1
+
+                # function test()
+                js_function += '\t//' + shape[0] + '\n'
+
+                js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
+                                                                     '\t{\n\t\tif(collidePointRect(mouseX, mouseY, array_' + \
+                               shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + \
+                               '[i].array_of_vectors[0].x, ' \
+                               'array_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].array_of_vectors[0].y, array_' +\
+                               shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].array_of_vectors[1].x, array_' +\
+                               shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].array_of_vectors[1].y) == true)\n'
+
+
+                js_function += '\t\t{\n\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(
+                        html_filename) - 3] + '[i].color(55);\n'  ##COLOR CAN CHANGE
+                js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
+                js_function += '\t\t\ttip.show();\n'
+                js_function += '\t\t}\n' \
+                                   '\t\telse\n\t\t{\n' \
+                                   '\t\t\tarray_' + shape[0] + 's_' + html_filename[
+                                                                      0:len(html_filename) - 3] + '[i].color(135);\n'
+                js_function += '\t\t}\n\t}\n\n'
+
+
             if(shape[0] == "circle"):
+                shapeCounter = 0
+                js_filler += '\t//' + shape[0] + '\n'
+
                 for circle_no in range(len(circles_info)):
                     if (circles_info[circle_no][0] == 'cls-1'):
                         pass
@@ -127,31 +168,46 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                     if (circles_info[circle_no][0] == 'cls-3'):
                         pass
                     if (circles_info[circle_no][0] == 'cls-4'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("red"));\n' \
-                                                            '\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.drawCircle' + str(circles_info[circle_no][1])\
-                                                            + ';\n\n'
+                        js_filler += '\tvar ' + shape[0] + str(shapeCounter) + ' = '
 
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("red");\n' \
-                                                           '\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.drawCircle' + str(circles_info[circle_no][1]) \
-                                                            + ';\n'
+                        for coordinate in range(0, len(circles_info[circle_no][1])):
+                            js_filler += 'createVector' + str(circles_info[circle_no][1][coordinate])
 
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(circle_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                                            '\t\t\t\t{\n' \
-                                                            '\t\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.beginFill("green");\n' \
-                                                            '\t\t\t\t\t' + shape[0] + 's[' + str(circle_no) + '].graphics.drawCircle' + str(circles_info[circle_no][1]) \
-                                                            + ';\n\n'
 
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Circle' + str(circle_no) + '", 100, 40);\n' \
-                                                                    '\t\t\t\t\tstage.addChild(tip);\n' \
-                                                                    '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                                                    '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
+                        js_filler += ';\n'
+                        js_filler += '\tpointer_' + shape[0] + 's_' + html_filename[
+                                                                      0:len(html_filename) - 3] + ' = new Circle(' + \
+                                     shape[0] + str(shapeCounter) + ', "stroke");\n'
+                        js_filler += '\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[' + str(
+                            circle_no) + '] = pointer_' + shape[
+                                         0] + 's_' + html_filename[0:len(html_filename) - 3] + ';\n\n'
 
                     if (circles_info[circle_no][0] == 'cls-5'):
                         pass
                     if (circles_info[circle_no][0] == 'cls-6'):
                         pass
+
+                    shapeCounter += 1
+
+                    # function test()
+                    js_function += '\t//' + shape[0] + '\n'
+
+                    js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
+                                                                         '\t{\n\t\tif(collidePointCircle(mouseX, mouseY, array_' + \
+                                   shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + \
+                                   '[i].vector_point.x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].vector_point.y,' \
+                                    ' 2 * ' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + ') == true)\n'
+                    js_function += '\t\t{\n\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(
+                        html_filename) - 3] + '[i].color(55);\n'  ##COLOR CAN CHANGE
+                    js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
+                    js_function += '\t\t\ttip.show();\n'
+                    js_function += '\t\t}\n' \
+                                   '\t\telse\n\t\t{\n' \
+                                   '\t\t\tarray_' + shape[0] + 's_' + html_filename[
+                                                                      0:len(html_filename) - 3] + '[i].color(135);\n'
+                    js_function += '\t\t}\n\t}\n'
+
+                    js_function += '}\n\n'
 
             if (shape[0] == "ellipse"):
                 for ellipse in ellipses_info:
@@ -177,37 +233,8 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                         pass
                     if (lines_info[line_no][0] == 'cls-3'):
                         pass
-                    if (lines_info[line_no][0] == 'cls-4'):
-                        html_function_shape = html_function_shape + '\t\t\t\tfillObj.push(' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command);\n' \
-                                                            '\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.moveTo' + str(lines_info[line_no][1][0])
-                        for coordinate in range(1, len(lines_info[line_no][1])):
-                            html_function_shape = html_function_shape + '.lineTo' + str(lines_info[line_no][1][coordinate])
-                        html_function_shape = html_function_shape + ';\n\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command;\n' \
-                                                                '\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.moveTo' + str(lines_info[line_no][1][0])
-
-                        for coordinate in range(1, len(lines_info[line_no][1])):
-                            html_function_tick= html_function_tick + '.lineTo' + str(lines_info[line_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\tif(' + shape[0] + 's[' + str(line_no) + '].hitTest(stage.mouseX, stage.mouseY))\n' \
-                                         '\t\t\t\t{\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.beginStroke("black").command;\n' \
-                                       '\t\t\t\t\t' + shape[0] + 's[' + str(line_no) + '].graphics.moveTo' + str(lines_info[line_no][1][0])
-
-                        for coordinate in range(1, len(lines_info[line_no][1])):
-                            html_function_tick = html_function_tick + '.lineTo' + str(
-                                lines_info[line_no][1][coordinate])
-                        html_function_tick = html_function_tick + ';\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t\ttip = new foo9.createjs.Tooltip("Line' + str(line_no) + '", 100, 40);\n' \
-                                         '\t\t\t\t\tstage.addChild(tip);\n' \
-                                         '\t\t\t\t\ttip.x = stage.mouseX - tip.width/2;\n' \
-                                         '\t\t\t\t\ttip.y = stage.mouseY - tip.height;\n'
-
-                        html_function_tick = html_function_tick + '\t\t\t\t}\n\n'
+                    if (lines_info[line_no][0] == 'cls-4'):                 ## TO BE WRITTEN
+                        pass
 
                     if (lines_info[line_no][0] == 'cls-5'):
                         pass
@@ -264,12 +291,6 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                     shapeCounter += 1
 
                 ##function test()
-
-                js_function += 'function ' + html_filename[0:len(html_filename) - 3] + '()\n'
-                js_function += '{\n'
-                js_function += '\tclear();\n' \
-                                '\tvar i = 0;\n\n'
-
                 js_function += '\t//' + shape[0] + '\n'
 
                 js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
@@ -367,4 +388,4 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     file.write(js_filler)
     file.write(js_function)
 
-parse("../Data Files/GKWaterLines.svg", "test.js")
+parse("../Data Files/GKBaseMap.svg", "test.js")
