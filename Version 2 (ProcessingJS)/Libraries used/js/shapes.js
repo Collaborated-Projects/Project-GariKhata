@@ -34,8 +34,6 @@ function Ellipse(vector_point, radiusX, radiusY, stroke_or_fill)
 		
 		ellipse(this.vector_point.x, this.vector_point.y, this.radiusX, this.radiusY);
 	};
-
-
 }
 
 //Circle
@@ -44,8 +42,35 @@ function Circle(vector_point, radius, stroke_or_fill)
 	this.vector_point = vector_point;
 	this.radius = radius;
 
-	//Calling a function
-	var circle = new Ellipse(this.vector_point, this.radius, this.radius, stroke_or_fill);
+	this.col = 135;
+
+	if(stroke_or_fill === "fill")
+	{
+		fill(this.col);
+	}
+	else if(stroke_or_fill === "stroke")
+	{
+		stroke(this.col)
+	}
+	
+	ellipse(this.vector_point.x, this.vector_point.y, this.radius, this.radius);
+
+	this.color = function(c)
+	{
+		//clear();
+		this.col = c;
+		
+		if(stroke_or_fill === "fill")
+		{
+			fill(this.col);
+		}
+		else if(stroke_or_fill === "stroke")
+		{
+			stroke(this.col)
+		}
+		
+		ellipse(this.vector_point.x, this.vector_point.y, this.radius, this.radius);
+	};
 }
 
 //Polygon
