@@ -402,4 +402,4 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     file.write(js_function)
 
 
-parse("../Data Files/GKSewageLines.svg", "test.js")
+parse("../Data Files/GKGasLines.svg", "gaslines.js")

@@ -328,7 +328,7 @@ function test()
 		var j=0;
 		for(j=0; j<array_polylines_test[i].array_of_vectors.length - 1; j++)
 		{
-			if(collidePointLine(mouseX, mouseY, array_polylines_test[i].array_of_vectors[j].x, array_polylines_test[i].array_of_vectors[j].y, array_polylines_test[i].array_of_vectors[j+1].x, array_polylines_test[i].array_of_vectors[j+1].y, 1) == true)
+			if(collidePointLine(mouseX, mouseY, array_polylines_test[i].array_of_vectors[j].x, array_polylines_test[i].array_of_vectors[j].y, array_polylines_test[i].array_of_vectors[j+1].x, array_polylines_test[i].array_of_vectors[j+1].y, 0.1) == true)
 			{
 				array_polylines_test[i].color(150);
 				tip = new Tooltip("polyline" + i, mouseX, mouseY, 100, 40);
