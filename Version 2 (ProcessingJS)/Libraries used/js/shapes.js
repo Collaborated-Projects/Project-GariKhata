@@ -78,15 +78,18 @@ function Polygon(array_of_vectors, stroke_or_fill)
 {
 	this.array_of_vectors = array_of_vectors;
 	
-	this.col = 135;
+	this.red = 0;
+	this.green = 0;
+	this.blue = 255;
+	this.alpha = 0;
 
 	if(stroke_or_fill === "fill")
 	{
-		fill(this.col);
+		fill(this.red, this.green, this.blue, this.alpha);
 	}
 	else if(stroke_or_fill === "stroke")
 	{
-		stroke(this.col)
+		stroke(this.red, this.green, this.blue, this.alpha);
 	}
 	
 	beginShape();
@@ -97,18 +100,21 @@ function Polygon(array_of_vectors, stroke_or_fill)
 	}
 	endShape();
 
-	this.color = function(c)
+	this.color = function(r, g, b, alpha)
 	{
 		//clear();
-		this.col = c;
+		this.red = r;
+		this.green = g;
+		this.blue = b;
+		this.alpha = alpha;
 		
 		if(stroke_or_fill === "fill")
 		{
-			fill(this.col);
+			fill(this.red, this.green, this.blue, this.alpha);
 		}
 		else if(stroke_or_fill === "stroke")
 		{
-			stroke(this.col);
+			stroke(this.red, this.green, this.blue, this.alpha);
 		}
 		
 		beginShape();
@@ -161,9 +167,12 @@ function Rectangle(array_of_vectors, stroke_or_fill)
 function PolyLine(array_of_vectors)
 {
 	this.array_of_vectors = array_of_vectors;
-	this.col = 0;
+	this.red = 0;
+	this.green = 0;
+	this.blue = 255;
+	this.alpha = 0;
 
-	stroke(this.col);
+	stroke(this.red, this.green, this.blue, this.alpha);
 	strokeWeight(2);
 
 	var i=0;
@@ -172,10 +181,14 @@ function PolyLine(array_of_vectors)
 		line(this.array_of_vectors[i].x, this.array_of_vectors[i].y, this.array_of_vectors[i+1].x, this.array_of_vectors[i+1].y);
 	}
 	
-	this.color = function(c)
+	this.color = function(r, g, b, alpha)
 	{
-		this.col = c;
-		stroke(this.col);
+		this.red = r;
+		this.green = g;
+		this.blue = b;
+		this.alpha = alpha;
+
+		stroke(this.red, this.green, this.blue, this.alpha);
 		strokeWeight(2);
 
 		var i=0;
@@ -197,7 +210,7 @@ function Tooltip(title, startX, startY, width, height)
 
 	this.show = function()
 	{
-		fill(255, 0, 0);
+		fill(0, 0, 0, 255);
 		rect(this.startX, this.startY, this.width, this.height);
 		fill(255);
 		textSize(15);

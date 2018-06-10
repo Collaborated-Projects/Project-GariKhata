@@ -312,13 +312,13 @@ function test()
 	{
 		if(collidePointCircle(mouseX, mouseY, array_circles_test[i].vector_point.x, array_circles_test[i].vector_point.y, 2 * array_circles_test[i].radius) == true)
 		{
-			array_circles_test[i].color(55);
+			array_circles_test[i].color(0, 0, 0, 255);
 			tip = new Tooltip("circle" + i, mouseX, mouseY, 100, 40);
 			tip.show();
 		}
 		else
 		{
-			array_circles_test[i].color(135);
+			array_circles_test[i].color(0, 0, 0, 255);
 		}
 	}
 
@@ -330,13 +330,13 @@ function test()
 		{
 			if(collidePointLine(mouseX, mouseY, array_polylines_test[i].array_of_vectors[j].x, array_polylines_test[i].array_of_vectors[j].y, array_polylines_test[i].array_of_vectors[j+1].x, array_polylines_test[i].array_of_vectors[j+1].y, 0.1) == true)
 			{
-				array_polylines_test[i].color(150);
+				array_polylines_test[i].color(0, 0, 0, 255);
 				tip = new Tooltip("polyline" + i, mouseX, mouseY, 100, 40);
 				tip.show();
 			}
 			else
 			{
-				array_polylines_test[i].color(0);
+				array_polylines_test[i].color(0, 0, 255, 255);
 			}
 		}
 	}
@@ -346,13 +346,13 @@ function test()
 	{
 		if(collidePointPoly(mouseX, mouseY, array_polygons_test[i].array_of_vectors) == true)
 		{
-			array_polygons_test[i].color(55);
+			array_polygons_test[i].color(0, 0, 0, 255);
 			tip = new Tooltip("polygon" + i, mouseX, mouseY, 100, 40);
 			tip.show();
 		}
 		else
 		{
-			array_polygons_test[i].color(135);
+			array_polygons_test[i].color(255, 0, 0, 255);
 		}
 	}
 }

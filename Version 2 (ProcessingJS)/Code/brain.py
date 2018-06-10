@@ -146,13 +146,13 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
 
 
                 js_function += '\t\t{\n\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(
-                        html_filename) - 3] + '[i].color(55);\n'  ##COLOR CAN CHANGE
+                        html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'  ##COLOR CAN CHANGE
                 js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
                 js_function += '\t\t\ttip.show();\n'
                 js_function += '\t\t}\n' \
                                    '\t\telse\n\t\t{\n' \
                                    '\t\t\tarray_' + shape[0] + 's_' + html_filename[
-                                                                      0:len(html_filename) - 3] + '[i].color(135);\n'
+                                                                      0:len(html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'
                 js_function += '\t\t}\n\t}\n\n'
 
 
@@ -197,13 +197,13 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                                    '[i].vector_point.x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].vector_point.y,' \
                                     ' 2 * array_' + shape[0] + 's_' + html_filename[0:len(html_filename) - 3] + '[i].radius) == true)\n'
                 js_function += '\t\t{\n\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(
-                        html_filename) - 3] + '[i].color(55);\n'  ##COLOR CAN CHANGE
+                        html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'  ##COLOR CAN CHANGE
                 js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
                 js_function += '\t\t\ttip.show();\n'
                 js_function += '\t\t}\n' \
                                    '\t\telse\n\t\t{\n' \
                                    '\t\t\tarray_' + shape[0] + 's_' + html_filename[
-                                                                      0:len(html_filename) - 3] + '[i].color(135);\n'
+                                                                      0:len(html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'
                 js_function += '\t\t}\n\t}\n\n'
 
 
@@ -315,13 +315,13 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                                '[i].array_of_vectors[j].y, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] +\
                                '[i].array_of_vectors[j+1].x, array_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3]  + \
                                '[i].array_of_vectors[j+1].y, 1) == true)\n'
-                js_function += '\t\t\t{\n\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(150);\n' ##COLOR CAN CHANGE
+                js_function += '\t\t\t{\n\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(0, 0, 0, 255);\n' ##COLOR CAN CHANGE
 
                 js_function += '\t\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
                 js_function += '\t\t\t\ttip.show();\n'
 
                 js_function += '\t\t\t}\n\t\t\telse\n\t\t\t{\n' \
-                               '\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(0);\n\t\t\t}\n'  ##COLOR CAN CHANGE
+                               '\t\t\t\tarray_' + shape[0] + 's_' + html_filename[0:len(html_filename)-3] + '[i].color(0, 0, 0, 255);\n\t\t\t}\n'  ##COLOR CAN CHANGE
                 js_function += '\t\t}\n\t}\n\n'
 
         if (shape[0] == "polygon"):
@@ -379,12 +379,12 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
                 js_function += '\tfor(i=0; i<' + str(shapeCounter) + '; i++)\n' \
                                 '\t{\n\t\tif(collidePointPoly(mouseX, mouseY, array_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + \
                                '[i].array_of_vectors) == true)\n'
-                js_function += '\t\t{\n\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(55);\n'    ##COLOR CAN CHANGE
+                js_function += '\t\t{\n\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'    ##COLOR CAN CHANGE
                 js_function += '\t\t\ttip = new Tooltip("' + shape[0] + '" + i, mouseX, mouseY, 100, 40);\n'
                 js_function += '\t\t\ttip.show();\n'
                 js_function += '\t\t}\n' \
                                '\t\telse\n\t\t{\n' \
-                               '\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(135);\n'
+                               '\t\t\tarray_' + shape[0] +'s_' + html_filename[0:len(html_filename) - 3] + '[i].color(0, 0, 0, 255);\n'
                 js_function += '\t\t}\n\t}\n'
 
                 js_function += '}\n\n'
@@ -402,4 +402,4 @@ def parse(xml_filename, html_filename):                     ##Takes a '.svg' fil
     file.write(js_function)
 
 
-parse("../Data Files/GKGasLines.svg", "gaslines.js")
+parse("../Data Files/GKGasLines.svg", "basemap.js")
