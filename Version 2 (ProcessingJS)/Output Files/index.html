@@ -3,20 +3,47 @@
 	<head>
 		<title>Project: GariKhata</title>
 
-		<script src="../Libraries used/js/p5.min.js"></script> 
-		<script src="../Libraries used/js/jquery-3.2.1.js"></script> 
+		<!-- <script src="../Libraries used/js/p5.min.js"></script> 
 		<script src="../Libraries used/js/p5.collide2d.min.js"></script> 
 		<script src="../Libraries used/js/basemap.js"></script> 
 		<script src="../Libraries used/js/plotprofile.js"></script> 
 		<script src="../Libraries used/js/waterlines.js"></script> 
 		<script src="../Libraries used/js/gaslines.js"></script> 
 		<script src="../Libraries used/js/sewagelines.js"></script> 
-		<script src="../Code/test.js"></script>
 		<script src="../Libraries used/js/shapes.js"></script> 
-		<script src="../Libraries used/js/test_p5.js.js"></script> 
 		<script src="../Libraries used/js/sketch.js"></script> 
+ -->
+ 		<script src="./p5.min.js"></script> 
+		<script src="./p5.collide2d.min.js"></script> 
+		<script src="./basemap.js"></script> 
+		<script src="./plotprofile.js"></script> 
+		<script src="./waterlines.js"></script> 
+		<script src="./gaslines.js"></script> 
+		<script src="./sewagelines.js"></script> 
+		<script src="./shapes.js"></script> 
+		<script src="./sketch.js"></script> 
 
 		<script>
+			var serverResponse = null;
+			var xhttp = new XMLHttpRequest();
+
+			xhttp.onreadystatechange = function()
+			{
+				if(this.readyState == 4 && this.status == 200)
+				{
+					serverResponse = JSON.parse(this.responseText);
+					document.getElementById("demo").innerHTML = serverResponse.plot[5].plotId;	
+
+					setPlotList(serverResponse.plot);
+				}
+				else
+				{
+					
+				}
+			}
+
+			xhttp.open("GET", "http://127.0.0.1:3000/plot/all-plots", true);
+			xhttp.send();
 		</script>
 
 	</head>
@@ -35,6 +62,9 @@
 		<input type="button" id="btnOnTEST" value="ON TEST">
 		<input type="button" id="btnOffTEST" value="OFF TEST">
 
+		<div id="demo">
+			
+		</div>
 
 	</body>
 </html>

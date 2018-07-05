@@ -1,3 +1,15 @@
+//Setting the plot list after AJAX API CALL is made
+
+var plotList = null;
+
+function setPlotList(passedPlotList)
+{
+	plotList = passedPlotList;
+	console.log(plotList);
+}
+
+console.log(plotList);
+
 //On-Off Tracker
 var num = [0, 0, 0, 0, 0];	//Make an array instead
 var numm = 0;
@@ -83,31 +95,31 @@ function draw()
 	if(num[0] === 1)
 	{
 		//test();
-		basemap();	
+		basemap(plotList);	
 	}
 	if(num[4] === 1)
 	{
 		//test();
-		sewagelines();	
+		sewagelines(plotList);	
 	}
 
 	
 	if(num[2] === 1)
 	{
 		//test();
-		waterlines();	
+		waterlines(plotList);	
 	}
 
 	if(num[3] === 1)
 	{
 		//test();
-		gaslines();	
+		gaslines(plotList);	
 	}
 
 	if(num[1] === 1)
 	{
 		//test();
-		plotprofile();	
+		plotprofile(plotList);	
 	}
 	//console.log(num);
 	//console.log(numm);
